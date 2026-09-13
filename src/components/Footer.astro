@@ -1,0 +1,14 @@
+---
+import { salonName, instagramUrl, lineUrl } from "../data/salon";
+---
+
+<footer class="footer">
+  <a href="/" class="footer-logo" aria-label={`${salonName} トップページ`}>
+    <img src="/images/logo-cropped.jpg" alt={salonName} width="150" height="150" />
+  </a>
+  <div class="footer-social">
+    <a href={lineUrl} target="_blank" rel="noopener noreferrer" title="LINE">LINE</a>
+    <a href={instagramUrl} target="_blank" rel="noopener noreferrer" title="Instagram">Instagram</a>
+  </div>
+  <p>&copy; 2026 {salonName}. All Rights Reserved.</p>
+</footer>

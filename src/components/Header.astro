@@ -1,0 +1,81 @@
+---
+import { salonName, instagramUrl, lineUrl } from "../data/salon";
+
+const isTenant = Astro.url.pathname === "/tenant";
+---
+
+<header class="header" id="site-header">
+  <div class="logo">
+    <a href="/" aria-label={`${salonName} トップページ`}>
+      <img src="/images/logo-cropped.jpg" alt={salonName} width="150" height="150" />
+    </a>
+  </div>
+
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-label="メニューを開く"
+    aria-expanded="false"
+    aria-controls="site-nav"
+  >
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+      <path d="M4 7h16M4 12h16M4 17h16" />
+    </svg>
+  </button>
+
+  <nav class="nav" id="site-nav" aria-label="メインナビゲーション">
+    <a href="/#top">TOP</a>
+    <a href="/#about">ABOUT</a>
+    <a href="/#menu">MENU</a>
+    <a href="/#access">ACCESS</a>
+    <a href="/tenant" class:list={{ active: isTenant }}>SHARE SALON</a>
+    <a href={lineUrl} target="_blank" rel="noopener noreferrer" class="header-sns-link" title="LINE" aria-label="LINE">
+      <span class="icon-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#06C755">
+          <path d="M12 2C6.48 2 2 5.82 2 10.5c0 2.94 1.77 5.52 4.48 7.07-.19.7-.69 2.55-.79 2.94-.14.54.2.53.42.38.17-.11 2.37-1.61 3.32-2.27.84.23 1.72.36 2.57.36 5.52 0 10-3.82 10-8.5S17.52 2 12 2z" />
+        </svg>
+      </span>
+    </a>
+    <a href={instagramUrl} target="_blank" rel="noopener noreferrer" class="header-sns-link insta-icon-link" title="Instagram" aria-label="Instagram">
+      <span class="icon-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" />
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+        </svg>
+      </span>
+    </a>
+  </nav>
+</header>
+
+<div class="nav-overlay" aria-hidden="true"></div>
+
+<script>
+  const header = document.querySelector("#site-header");
+  const toggle = header?.querySelector(".menu-toggle");
+  const nav = header?.querySelector(".nav");
+
+  const closeMenu = () => {
+    header?.classList.remove("menu-open");
+    toggle?.setAttribute("aria-expanded", "false");
+    toggle?.setAttribute("aria-label", "メニューを開く");
+  };
+
+  toggle?.addEventListener("click", () => {
+    if (!header || !toggle) return;
+    const open = !header.classList.contains("menu-open");
+    header.classList.toggle("menu-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "メニューを閉じる" : "メニューを開く");
+  });
+
+  nav?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  document.querySelector(".nav-overlay")?.addEventListener("click", closeMenu);
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 768) closeMenu();
+  });
+</script>

@@ -1,0 +1,999 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import { salonName, instagramUrl, lineUrl } from "../data/salon";
+
+const pageTitle = "Share Salon";
+---
+
+<Layout title={`${pageTitle} | ${salonName}`}>
+  <Header />
+
+    <!-- メインビジュアル -->
+    <section class="hero">
+      <div class="hero-content">
+        <p class="hero-label">SHARE SALON</p>
+
+        <h1>
+          シェアサロンという<br />
+          働き方。
+        </h1>
+
+        <p>
+          自分らしい働き方を叶える、<br />
+          美容施術者のためのシェアサロンをご案内しています。
+        </p>
+
+        <div class="hero-btns">
+          <a
+            href={lineUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-line"
+          >
+            LINEでお問い合わせ
+          </a>
+
+          <a
+            href={instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-insta"
+          >
+            Instagramでお問い合わせ
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="container">
+
+        <h2>SHARE SALON</h2>
+        <p class="subtitle">シェアサロンについて</p>
+
+        <p class="description">
+          {salonName} では、シェアサロンを活用して
+          ご自身のペースで働きたい美容施術者様を募集しています。<br /><br />
+
+          独立して自分のサロンを持つ前のステップとして、
+          また、既に個人で活動されている方の施術シェアサロンとして、
+          ご自身のスタイルに合わせてご利用いただけます。<br /><br />
+
+          集客や予約管理などは基本的にご自身で行っていただき、
+          お客様への施術に集中できる環境をご提供します。
+        </p>
+
+        <div class="features-card">
+
+          <div class="feature-item">
+            <span class="feature-number">01</span>
+            <span class="feature-text">
+              自分のペースで働ける
+            </span>
+          </div>
+
+          <div class="feature-item">
+            <span class="feature-number">02</span>
+            <span class="feature-text">
+              自分のお客様を持ち込んで利用可能
+            </span>
+          </div>
+
+          <div class="feature-item">
+            <span class="feature-number">03</span>
+            <span class="feature-text">
+              独立・開業前のステップとしても利用可能
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SPACE GALLERY -->
+    <section class="section space-gallery" id="space-gallery">
+      <div class="container">
+        <h2>SPACE GALLERY</h2>
+        <p class="subtitle">シェアサロンの雰囲気</p>
+
+        <div class="space-gallery-grid">
+          <figure class="space-gallery-item">
+            <img src="/images/space/space-01.jpg" alt="シェアサロンの店内・施術環境" loading="lazy" />
+            <figcaption class="space-gallery-caption">明るく開放感のある施術環境</figcaption>
+          </figure>
+          <figure class="space-gallery-item">
+            <img src="/images/space/space-02.jpg" alt="シェアサロンのシャンプー・施術環境" loading="lazy" />
+            <figcaption class="space-gallery-caption">ゆったり使える施術エリア</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 募集対象 -->
+    <section class="section bg-light">
+      <div class="container">
+
+        <h2>TARGET</h2>
+        <p class="subtitle">こんな方におすすめです</p>
+
+        <div class="job-grid">
+
+          <div class="job-card">
+            <div class="job-number">01</div>
+            <h3>シェアサロンで働きたい方</h3>
+            <p class="detail">
+              会社や店舗に所属せず、自分のペースでお客様を担当したい方に。
+            </p>
+          </div>
+
+          <div class="job-card">
+            <div class="job-number">02</div>
+            <h3>独立・開業を考えている方</h3>
+            <p class="detail">
+              いきなり店舗を持つのではなく、まずは小さくスタートしたい方に。
+            </p>
+          </div>
+
+          <div class="job-card">
+            <div class="job-number">03</div>
+            <h3>自分のお客様を持っている方</h3>
+            <p class="detail">
+              既存のお客様を大切にしながら、施術できる場所を探している方に。
+            </p>
+          </div>
+
+          <div class="job-card">
+            <div class="job-number">04</div>
+            <h3>シェアサロンを探している方</h3>
+            <p class="detail">
+              ネイル・アイブロウなど、ご自身の施術スタイルに合わせて利用したい方に。
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- 募集条件 -->
+    <section class="section">
+      <div class="container">
+
+        <h2>REQUIREMENTS</h2>
+        <p class="subtitle">ご利用条件・料金</p>
+
+        <div class="info-table">
+          <dl>
+
+            <dt>利用形態</dt>
+            <dd>
+              シェアサロン
+            </dd>
+
+            <dt>利用料金</dt>
+            <dd>
+              固定席 月額 ¥38,000（税抜）＋ 売上歩合20%
+            </dd>
+
+            <dt>利用時間</dt>
+            <dd>
+              営業時間内で、ご自身の予約に合わせてご利用いただけます。
+            </dd>
+
+            <dt>予約・集客</dt>
+            <dd>
+              原則としてご自身で管理していただきます。
+            </dd>
+
+            <dt>決済・会計</dt>
+            <dd>
+              原則としてご自身で管理していただきます。
+            </dd>
+
+            <dt>持ち込み</dt>
+            <dd>
+              ご自身で使用する施術道具・材料等は基本的にお持ち込みください。
+            </dd>
+
+            <dt>所在地</dt>
+            <dd>
+              札幌市豊平区平岸<br />
+              南北線「南平岸駅」周辺
+            </dd>
+
+          </dl>
+        </div>
+
+        <p class="note">
+          ※具体的な利用条件・設備・契約内容については、見学・面談時にご説明いたします。
+        </p>
+
+      </div>
+    </section>
+
+
+    <!-- FLOW -->
+    <section class="section bg-light">
+      <div class="container">
+
+        <h2>FLOW</h2>
+        <p class="subtitle">ご利用開始までの流れ</p>
+
+        <div class="flow-list">
+
+          <div class="flow-item">
+            <div class="flow-num">01</div>
+            <div class="flow-text">
+              <h3>お問い合わせ</h3>
+              <p>
+                LINEまたはInstagramよりお気軽にお問い合わせください。
+              </p>
+            </div>
+          </div>
+
+          <div class="flow-item">
+            <div class="flow-num">02</div>
+            <div class="flow-text">
+              <h3>サロン見学・面談</h3>
+              <p>
+                実際のサロンをご覧いただき、利用方法や料金、働き方についてご説明します。
+              </p>
+            </div>
+          </div>
+
+          <div class="flow-item">
+            <div class="flow-num">03</div>
+            <div class="flow-text">
+              <h3>条件確認・ご契約</h3>
+              <p>
+                利用条件をご確認いただき、ご納得いただいたうえで契約手続きを行います。
+              </p>
+            </div>
+          </div>
+
+          <div class="flow-item">
+            <div class="flow-num">04</div>
+            <div class="flow-text">
+              <h3>ご利用開始</h3>
+              <p>
+                ご契約完了後、ご都合の良い日程からサロン利用をスタートしていただけます。
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- FAQ -->
+    <section class="section">
+      <div class="container">
+
+        <h2>FAQ</h2>
+        <p class="subtitle">よくあるご質問</p>
+
+        <div class="faq-list">
+
+          <div class="faq-item">
+            <div class="faq-q">
+              <span class="q-icon">Q.</span>
+              どのような働き方ができますか？
+            </div>
+
+            <div class="faq-a">
+              <span class="a-icon">A.</span>
+              <span>
+                シェアサロン形式で、ご自身のお客様を担当していただく働き方が基本となります。
+                詳細については面談時にご説明いたします。
+              </span>
+            </div>
+          </div>
+
+
+          <div class="faq-item">
+            <div class="faq-q">
+              <span class="q-icon">Q.</span>
+              利用料金はいくらですか？
+            </div>
+
+            <div class="faq-a">
+              <span class="a-icon">A.</span>
+              <span>
+                固定席月額¥38,000（税抜）に加えて、
+                売上の20%を歩合としていただく料金形態となっています。
+              </span>
+            </div>
+          </div>
+
+
+          <div class="faq-item">
+            <div class="faq-q">
+              <span class="q-icon">Q.</span>
+              集客はしてもらえますか？
+            </div>
+
+            <div class="faq-a">
+              <span class="a-icon">A.</span>
+              <span>
+                基本的な集客・予約管理はご自身で行っていただきます。
+                ご自身のSNSや既存のお客様を活用してご利用いただくスタイルです。
+              </span>
+            </div>
+          </div>
+
+
+          <div class="faq-item">
+            <div class="faq-q">
+              <span class="q-icon">Q.</span>
+              見学だけでも大丈夫ですか？
+            </div>
+
+            <div class="faq-a">
+              <span class="a-icon">A.</span>
+              <span>
+                はい。まずは実際のサロンや利用条件をご確認いただいたうえで、
+                ご検討いただけます。
+              </span>
+            </div>
+          </div>
+
+
+          <div class="faq-item">
+            <div class="faq-q">
+              <span class="q-icon">Q.</span>
+              どんな施術者が利用できますか？
+            </div>
+
+            <div class="faq-a">
+              <span class="a-icon">A.</span>
+              <span>
+                ネイル・アイブロウなど、美容施術を行う方を中心に募集しています。
+                施術内容や必要な設備については事前にご相談ください。
+              </span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- TERMS -->
+    <section class="section bg-light">
+      <div class="container">
+
+        <h2>TERMS OF USE</h2>
+        <p class="subtitle">ご利用について</p>
+
+        <div class="terms-content">
+
+          <div class="terms-item">
+            <h3>ご契約について</h3>
+            <p>
+              ご利用にあたっては、事前の面談および利用条件の確認が必要となります。
+              契約内容をご確認いただき、ご同意のうえでご利用いただきます。
+            </p>
+          </div>
+
+          <div class="terms-item">
+            <h3>設備・備品について</h3>
+            <p>
+              サロン内の設備・備品は、他の利用者様も使用する共有エリアであることを
+              ご理解いただき、丁寧にご利用ください。
+            </p>
+          </div>
+
+          <div class="terms-item">
+            <h3>施術・お客様対応について</h3>
+            <p>
+              ご自身のお客様に対する施術、予約、会計、アフターフォロー等については、
+              原則として各施術者様ご自身で管理していただきます。
+            </p>
+          </div>
+
+          <div class="terms-item">
+            <h3>禁止事項について</h3>
+            <p>
+              他の利用者様やお客様への迷惑となる行為、設備を著しく損なう行為、
+              その他サロン運営に支障をきたす行為は禁止とさせていただきます。
+            </p>
+          </div>
+
+          <div class="terms-item">
+            <h3>詳細条件について</h3>
+            <p>
+              利用時間、設備、契約期間、支払い方法などの詳細については、
+              お問い合わせ・見学時にご説明いたします。
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- CONTACT -->
+    <section class="section">
+      <div class="container">
+
+        <h2>CONTACT</h2>
+        <p class="subtitle">見学・ご相談はこちら</p>
+
+        <p class="description contact-text">
+          シェアサロンについてのご質問、
+          サロン見学、料金や利用条件についてのお問い合わせは、
+          LINEまたはInstagramよりお気軽にお問い合わせください。
+        </p>
+
+        <div class="hero-btns">
+
+          <a
+            href={lineUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-line"
+          >
+            LINEでお問い合わせ
+          </a>
+
+          <a
+            href={instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-insta"
+          >
+            Instagramでお問い合わせ
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- フッター -->
+    <footer class="footer">
+
+      <div class="footer-social">
+
+        <a
+          href={lineUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          title="LINE"
+        >
+        </a>
+
+        <a
+          href={instagramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Instagram"
+        >
+        </a>
+
+      </div>
+
+      <p>&copy; 2026 {salonName}. All Rights Reserved.</p>
+
+    </footer>
+
+</Layout>
+
+<style>
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .section {
+    padding: 96px 0;
+    text-align: center;
+  }
+
+  .bg-light {
+    background-color: #faf8f5;
+  }
+
+  h2 {
+    font-size: 1.55rem;
+    font-weight: 400;
+    letter-spacing: 5px;
+    margin-bottom: 8px;
+    color: #a98f91;
+  }
+
+  .subtitle {
+    font-size: 0.78rem;
+    color: #aaa;
+    margin-bottom: 46px;
+    letter-spacing: 1.5px;
+  }
+
+  .description {
+    text-align: left;
+    font-size: 0.9rem;
+    color: #666;
+    max-width: 680px;
+    margin: 0 auto 44px;
+    line-height: 2;
+  }
+
+  .contact-text {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+
+  /* =========================
+     HERO
+  ========================= */
+
+  .hero {
+    min-height: 62vh;
+    background: #faf7f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 70px 20px;
+    box-sizing: border-box;
+  }
+
+  .hero-content {
+    max-width: 700px;
+  }
+
+  .hero-label {
+    font-size: 0.68rem;
+    color: #a98f91;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-size: 2.05rem;
+    font-weight: 300;
+    letter-spacing: 5px;
+    line-height: 1.4;
+    margin: 0 0 20px;
+    color: #4a4a4a;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 38px;
+  }
+
+
+  /* =========================
+     FEATURES
+  ========================= */
+
+  .features-card {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid #e9e1df;
+    border-radius: 3px;
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    text-align: left;
+  }
+
+  .feature-number {
+    color: #a98f91;
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin-right: 15px;
+    letter-spacing: 1px;
+  }
+
+  .feature-text {
+    font-size: 0.92rem;
+    color: #555;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+
+  /* =========================
+     JOB / TARGET
+  ========================= */
+
+  .job-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .job-card {
+    background: #fff;
+    padding: 30px 28px;
+    border-radius: 3px;
+    text-align: left;
+    border: 1px solid #e9e1df;
+  }
+
+  .job-number {
+    font-size: 0.75rem;
+    color: #a98f91;
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .job-card h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #4a4a4a;
+  }
+
+  .job-card .detail {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0;
+    line-height: 1.7;
+  }
+
+
+  /* =========================
+     INFO TABLE
+  ========================= */
+
+  .info-table dl {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    text-align: left;
+    max-width: 650px;
+    margin: 0 auto;
+    gap: 15px 0;
+    font-size: 0.88rem;
+  }
+
+  .info-table dt {
+    font-weight: bold;
+    color: #888;
+  }
+
+  .info-table dd {
+    margin: 0;
+    color: #555;
+  }
+
+  .note {
+    max-width: 650px;
+    margin: 30px auto 0;
+    color: #999;
+    font-size: 0.75rem;
+    text-align: left;
+  }
+
+
+  /* =========================
+     FLOW
+  ========================= */
+
+  .flow-list {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .flow-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 18px;
+    background: #fff;
+    padding: 24px 26px;
+    border-radius: 3px;
+    border: 1px solid #e9e1df;
+  }
+
+  .flow-num {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #a98f91;
+    margin-right: 20px;
+    line-height: 1;
+    padding-top: 3px;
+  }
+
+  .flow-text h3 {
+    font-size: 0.95rem;
+    margin: 0 0 5px;
+    color: #4a4a4a;
+  }
+
+  .flow-text p {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+
+  /* =========================
+     FAQ
+  ========================= */
+
+  .faq-list {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .faq-item {
+    margin-bottom: 25px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #eee7e4;
+  }
+
+  .faq-item:last-child {
+    border-bottom: none;
+  }
+
+  .faq-q {
+    font-weight: bold;
+    font-size: 0.95rem;
+    color: #4a4a4a;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .q-icon {
+    color: #a98f91;
+    margin-right: 8px;
+    font-size: 1.1rem;
+  }
+
+  .faq-a {
+    font-size: 0.88rem;
+    color: #666;
+    line-height: 1.7;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .a-icon {
+    color: #aaa;
+    margin-right: 8px;
+    font-weight: bold;
+  }
+
+
+  /* =========================
+     TERMS
+  ========================= */
+
+  .terms-content {
+    text-align: left;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .terms-item {
+    margin-bottom: 25px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #eee7e4;
+  }
+
+  .terms-item:last-child {
+    border-bottom: none;
+  }
+
+  .terms-item h3 {
+    font-size: 0.95rem;
+    color: #4a4a4a;
+    margin-bottom: 8px;
+  }
+
+  .terms-item p {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0;
+    line-height: 1.7;
+  }
+
+
+  /* =========================
+     BUTTON
+  ========================= */
+
+  .hero-btns {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    min-width: 220px;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-size: 0.82rem;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+    box-sizing: border-box;
+    box-shadow: none;
+  }
+
+  .btn:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+  }
+
+  a.btn.btn-line {
+    background: #fff !important;
+    border: 1px solid #72b98a !important;
+    color: #4e8f65 !important;
+    font-weight: 500;
+  }
+
+  a.btn.btn-line:hover {
+    background: #f5fbf7 !important;
+  }
+
+  a.btn.btn-insta {
+    background: #fff;
+    border: 1px solid #d36a8c;
+    color: #c65a7d;
+    font-weight: 500;
+  }
+
+  a.btn.btn-insta:hover {
+    background: #fff7fa;
+  }
+
+
+  /* =========================
+     FOOTER
+  ========================= */
+
+  .footer {
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #bbb;
+    border-top: 1px solid #f5ebeb;
+  }
+
+  .footer-social {
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .footer-social a {
+    color: #a98f91;
+    transition: opacity 0.3s;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .footer-social a:hover {
+    opacity: 0.7;
+  }
+
+
+  /* =========================
+     SMARTPHONE
+  ========================= */
+
+  @media (max-width: 768px) {
+
+    .logo a {
+      font-size: 1.1rem;
+    }
+
+    .nav {
+      width: 100%;
+      justify-content: center;
+      overflow-x: auto;
+      gap: 12px;
+      padding-bottom: 4px;
+      white-space: nowrap;
+    }
+
+    .nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav a {
+      font-size: 0.75rem;
+    }
+
+    .hero {
+      min-height: 60vh;
+      padding: 60px 20px;
+    }
+
+    .hero h1 {
+      font-size: 1.5rem;
+      letter-spacing: 3px;
+    }
+
+    .hero-label {
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+    }
+
+    .section {
+      padding: 72px 0;
+    }
+
+    .info-table dl {
+      grid-template-columns: 1fr;
+      gap: 5px 0;
+    }
+
+    .info-table dt {
+      margin-top: 12px;
+    }
+
+    .flow-item {
+      flex-direction: column;
+    }
+
+    .flow-num {
+      margin-bottom: 10px;
+    }
+
+    .hero-btns {
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .btn {
+      width: 90%;
+      max-width: 300px;
+      padding: 12px 15px;
+    }
+
+    .features-card {
+      padding: 22px 20px;
+    }
+
+    .feature-item {
+      align-items: flex-start;
+    }
+
+    .feature-text {
+      font-size: 0.85rem;
+    }
+
+  }
+
+</style>

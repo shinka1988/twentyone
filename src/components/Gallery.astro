@@ -1,0 +1,34 @@
+---
+export interface GalleryItem {
+  src: string;
+  alt: string;
+}
+
+const galleryItems: GalleryItem[] = [
+  // 写真を追加するときはここに追記してください。
+  // { src: "/images/gallery/photo-01.jpg", alt: "店内写真" },
+  // { src: "/images/gallery/photo-02.jpg", alt: "施術写真" },
+  // { src: "/images/gallery/photo-03.jpg", alt: "ネイルデザイン" },
+];
+---
+
+<section class="section gallery-section">
+  <div class="container">
+    <h2>GALLERY</h2>
+    <p class="subtitle">サロンの雰囲気・施術例</p>
+
+    {galleryItems.length > 0 ? (
+      <div class="gallery-grid">
+        {galleryItems.map((item) => (
+          <figure class="gallery-item">
+            <img src={item.src} alt={item.alt} loading="lazy" />
+          </figure>
+        ))}
+      </div>
+    ) : (
+      <div class="gallery-empty">
+        <p>写真を追加すると、ここにギャラリーが表示されます。</p>
+      </div>
+    )}
+  </div>
+</section>

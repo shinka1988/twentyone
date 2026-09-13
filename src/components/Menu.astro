@@ -1,0 +1,98 @@
+---
+import { menuItems } from "../data/menu";
+
+const categories = [...new Set(menuItems.map((item) => item.category))];
+---
+
+<section id="menu" class="section bg-light menu-section">
+  <div class="container">
+    <h2>MENU</h2>
+    <p class="subtitle">対応メニュー・施術例</p>
+    <p class="menu-hint">メニューをタップすると、詳細・写真をご覧いただけます。掲載内容はシェアサロンの利用を検討される方向けの参考情報です。</p>
+
+    {categories.map((category) => (
+      <div class="menu-category">
+        <h3 class="category-title">{category}</h3>
+
+        <div class="menu-grid">
+          {menuItems
+            .filter((item) => item.category === category)
+            .map((item) => (
+              <button
+                type="button"
+                class="menu-card menu-card-button"
+                data-menu-name={item.name}
+                data-menu-price={item.price}
+                data-menu-description={item.description}
+                data-menu-image={item.image ?? ""}
+              >
+                {item.image && (
+                  <div class="menu-image">
+                    <img src={item.image} alt={item.name} loading="lazy" />
+                  </div>
+                )}
+                <div class="menu-card-body">
+                  <h3>{item.name}</h3>
+                  <p class="price">{item.price}</p>
+                  <span class="menu-more">詳細を見る <span aria-hidden="true">→</span></span>
+                </div>
+              </button>
+            ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <dialog class="menu-modal" aria-labelledby="menu-modal-title">
+    <div class="menu-modal-inner">
+      <button type="button" class="menu-modal-close" aria-label="閉じる">×</button>
+      <div class="menu-modal-image-wrap" hidden>
+        <img class="menu-modal-image" src="" alt="" />
+      </div>
+      <div class="menu-modal-content">
+        <p class="menu-modal-label">MENU</p>
+        <h3 id="menu-modal-title"></h3>
+        <p class="menu-modal-price"></p>
+        <p class="menu-modal-description"></p>
+        <p class="menu-modal-contact-note">施術のご予約は現在受け付けていません。シェアサロンのご利用・見学についてはお問い合わせください。</p>      </div>
+    </div>
+  </dialog>
+</section>
+
+<script>
+  const cards = document.querySelectorAll<HTMLButtonElement>(".menu-card-button");
+  const modal = document.querySelector<HTMLDialogElement>(".menu-modal");
+  const close = document.querySelector<HTMLButtonElement>(".menu-modal-close");
+  const imageWrap = document.querySelector<HTMLDivElement>(".menu-modal-image-wrap");
+  const image = document.querySelector<HTMLImageElement>(".menu-modal-image");
+  const title = document.querySelector<HTMLElement>("#menu-modal-title");
+  const price = document.querySelector<HTMLElement>(".menu-modal-price");
+  const description = document.querySelector<HTMLElement>(".menu-modal-description");
+
+  cards.forEach((card) => {
+    card.addEventListener("click", () => {
+      if (!modal || !title || !price || !description || !imageWrap || !image) return;
+
+      title.textContent = card.dataset.menuName ?? "";
+      price.textContent = card.dataset.menuPrice ?? "";
+      description.textContent = card.dataset.menuDescription ?? "";
+
+      const imageSrc = card.dataset.menuImage ?? "";
+      if (imageSrc) {
+        image.src = imageSrc;
+        image.alt = card.dataset.menuName ?? "メニュー写真";
+        imageWrap.hidden = false;
+      } else {
+        image.removeAttribute("src");
+        imageWrap.hidden = true;
+      }
+
+      modal.showModal();
+    });
+  });
+
+  close?.addEventListener("click", () => modal?.close());
+  modal?.addEventListener("click", (event) => {
+    if (event.target === modal) modal.close();
+  });
+</script>

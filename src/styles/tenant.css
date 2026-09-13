@@ -1,0 +1,276 @@
+/* =========================
+   FLOOR RENT PAGE
+   tenant.astro only
+========================= */
+
+.tenant-page .hero {
+  min-height: 55vh;
+  padding: 70px 20px;
+}
+
+.tenant-page .hero-content {
+  max-width: 700px;
+}
+
+.tenant-page .hero-label {
+  font-size: 0.72rem;
+  color: #c0989b;
+  letter-spacing: 3px;
+  margin: 0 0 20px;
+}
+
+.tenant-page .hero h1 {
+  font-size: 2.2rem;
+  font-weight: normal;
+  letter-spacing: 4px;
+  line-height: 1.4;
+  margin: 0 0 20px;
+  color: #4a4a4a;
+}
+
+.tenant-page .hero p {
+  font-size: 0.95rem;
+  color: #777;
+  margin: 0 0 30px;
+}
+
+.tenant-page .description {
+  text-align: left;
+}
+
+.tenant-page .contact-text {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.tenant-page .features-card {
+  max-width: 600px;
+  padding: 25px 30px;
+  gap: 18px;
+}
+
+.tenant-page .feature-item {
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+
+.tenant-page .feature-number {
+  color: #c0989b;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-right: 15px;
+  letter-spacing: 1px;
+}
+
+.tenant-page .feature-text {
+  font-size: 0.92rem;
+  color: #555;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.tenant-page .job-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.tenant-page .job-card {
+  background: #fff;
+  padding: 28px 25px;
+  border-radius: 8px;
+  text-align: left;
+  border: 1px solid #f0e6e6;
+}
+
+.tenant-page .job-number {
+  font-size: 0.75rem;
+  color: #c0989b;
+  letter-spacing: 2px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.tenant-page .job-card h3 {
+  font-size: 1rem;
+  margin: 0 0 10px;
+  color: #4a4a4a;
+}
+
+.tenant-page .job-card .detail {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.7;
+}
+
+.tenant-page .info-table dl {
+  grid-template-columns: 140px 1fr;
+  max-width: 650px;
+}
+
+.tenant-page .note {
+  max-width: 650px;
+  margin: 30px auto 0;
+  color: #999;
+  font-size: 0.75rem;
+  text-align: left;
+}
+
+.tenant-page .flow-list {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.tenant-page .flow-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  background: #fff;
+  padding: 22px;
+  border-radius: 8px;
+  border: 1px solid #f0e6e6;
+}
+
+.tenant-page .flow-num {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #c0989b;
+  margin-right: 20px;
+  line-height: 1;
+  padding-top: 3px;
+}
+
+.tenant-page .flow-text h3 {
+  font-size: 0.95rem;
+  margin: 0 0 5px;
+  color: #4a4a4a;
+}
+
+.tenant-page .flow-text p {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.tenant-page .faq-list {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.tenant-page .faq-item {
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed #e8d8d8;
+}
+
+.tenant-page .faq-item:last-child {
+  border-bottom: none;
+}
+
+.tenant-page .faq-q {
+  font-weight: bold;
+  font-size: 0.95rem;
+  color: #4a4a4a;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.tenant-page .q-icon {
+  color: #c0989b;
+  margin-right: 8px;
+  font-size: 1.1rem;
+}
+
+.tenant-page .faq-a {
+  font-size: 0.88rem;
+  color: #666;
+  line-height: 1.7;
+  display: flex;
+  align-items: flex-start;
+}
+
+.tenant-page .a-icon {
+  color: #aaa;
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+.tenant-page .terms-content {
+  text-align: left;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.tenant-page .terms-item {
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed #e8d8d8;
+}
+
+.tenant-page .terms-item:last-child {
+  border-bottom: none;
+}
+
+.tenant-page .terms-item h3 {
+  font-size: 0.95rem;
+  color: #4a4a4a;
+  margin: 0 0 8px;
+}
+
+.tenant-page .terms-item p {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .tenant-page .hero {
+    min-height: 60vh;
+    padding: 60px 20px;
+  }
+
+  .tenant-page .hero h1 {
+    font-size: 1.55rem;
+    letter-spacing: 2px;
+  }
+
+  .tenant-page .hero-label {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+  }
+
+  .tenant-page .section {
+    padding: 65px 0;
+  }
+
+  .tenant-page .info-table dl {
+    grid-template-columns: 1fr;
+  }
+
+  .tenant-page .flow-item {
+    flex-direction: column;
+  }
+
+  .tenant-page .flow-num {
+    margin: 0 0 10px;
+  }
+
+  .tenant-page .features-card {
+    padding: 22px 20px;
+  }
+
+  .tenant-page .feature-item {
+    align-items: flex-start;
+  }
+
+  .tenant-page .feature-text {
+    font-size: 0.85rem;
+  }
+}

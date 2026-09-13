@@ -1,0 +1,37 @@
+---
+import { salonName, aboutImage } from "../data/salon";
+---
+
+<section id="about" class="section">
+  <div class="container">
+    <h2>ABOUT</h2>
+    <p class="subtitle">サロンについて</p>
+
+    <div class:list={["about-layout", !aboutImage && "about-layout-no-image"]}>
+      {aboutImage && (
+        <div class="about-image-wrap">
+          <img
+            src={aboutImage}
+            alt={`${salonName} 店内`}
+            loading="lazy"
+          />
+        </div>
+      )}
+
+      <div class="about-copy">
+        <p class="description">
+          {salonName}
+          は、ゆったりと落ち着いた空間を提供する、美容施術者のためのシェアサロンです。
+          <br /><br />
+          アイブロウとネイルのトータルビューティーに対応し、丁寧なカウンセリングと高い技術でお客様本来の美しさを引き出します。
+        </p>
+
+        <div class="features-card">
+          <div class="feature-item"><span class="feature-text">パラジェル取り扱いサロン</span></div>
+          <div class="feature-item"><span class="feature-text">HBL（ハリウッドブロウリフト）公認ブロウリスト</span></div>
+          <div class="feature-item"><span class="feature-text">似合わせアイブロウスタイリング</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
