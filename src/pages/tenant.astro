@@ -168,45 +168,42 @@ const pageTitle = "Share Salon";
         <h2>REQUIREMENTS</h2>
         <p class="subtitle">ご利用条件・料金</p>
 
-        <div class="info-table">
+        <div class="requirements-table">
           <dl>
+            <div class="info-row">
+              <dt>利用形態</dt>
+              <dd>シェアサロン</dd>
+            </div>
 
-            <dt>利用形態</dt>
-            <dd>
-              シェアサロン
-            </dd>
+            <div class="info-row info-row-price">
+              <dt>利用料金</dt>
+              <dd>固定席 月額 ¥38,000（税抜）＋ 売上歩合20%</dd>
+            </div>
 
-            <dt>利用料金</dt>
-            <dd>
-              固定席 月額 ¥38,000（税抜）＋ 売上歩合20%
-            </dd>
+            <div class="info-row">
+              <dt>利用時間</dt>
+              <dd>営業時間内で、ご自身の予約に合わせてご利用いただけます。</dd>
+            </div>
 
-            <dt>利用時間</dt>
-            <dd>
-              営業時間内で、ご自身の予約に合わせてご利用いただけます。
-            </dd>
+            <div class="info-row">
+              <dt>予約・集客</dt>
+              <dd>原則としてご自身で管理していただきます。</dd>
+            </div>
 
-            <dt>予約・集客</dt>
-            <dd>
-              原則としてご自身で管理していただきます。
-            </dd>
+            <div class="info-row">
+              <dt>決済・会計</dt>
+              <dd>原則としてご自身で管理していただきます。</dd>
+            </div>
 
-            <dt>決済・会計</dt>
-            <dd>
-              原則としてご自身で管理していただきます。
-            </dd>
+            <div class="info-row">
+              <dt>持ち込み</dt>
+              <dd>ご自身で使用する施術道具・材料等は基本的にお持ち込みください。</dd>
+            </div>
 
-            <dt>持ち込み</dt>
-            <dd>
-              ご自身で使用する施術道具・材料等は基本的にお持ち込みください。
-            </dd>
-
-            <dt>所在地</dt>
-            <dd>
-              札幌市豊平区平岸<br />
-              南北線「南平岸駅」周辺
-            </dd>
-
+            <div class="info-row">
+              <dt>所在地</dt>
+              <dd>札幌市豊平区平岸<br />南北線「南平岸駅」周辺</dd>
+            </div>
           </dl>
         </div>
 
@@ -661,31 +658,53 @@ const pageTitle = "Share Salon";
      INFO TABLE
   ========================= */
 
-  .info-table dl {
-    display: grid;
-    grid-template-columns: 140px 1fr;
-    text-align: left;
-    max-width: 650px;
+  .requirements-table {
+    max-width: 700px;
     margin: 0 auto;
-    gap: 15px 0;
+    text-align: left;
+  }
+
+  .requirements-table dl {
+    margin: 0;
     font-size: 0.88rem;
   }
 
-  .info-table dt {
-    font-weight: bold;
-    color: #888;
+  .info-row {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 28px;
+    padding: 19px 0;
+    border-bottom: 1px solid #eee7e4;
   }
 
-  .info-table dd {
+  .info-row:first-child {
+    border-top: 1px solid #eee7e4;
+  }
+
+  .requirements-table dt {
     margin: 0;
-    color: #555;
+    color: #9b8b8b;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+  }
+
+  .requirements-table dd {
+    margin: 0;
+    color: #555052;
+    line-height: 1.9;
+  }
+
+  .info-row-price dd {
+    color: #4f4a4b;
+    letter-spacing: 0.02em;
   }
 
   .note {
-    max-width: 650px;
-    margin: 30px auto 0;
-    color: #999;
-    font-size: 0.75rem;
+    max-width: 700px;
+    margin: 24px auto 0;
+    color: #aaa0a0;
+    font-size: 0.74rem;
+    line-height: 1.8;
     text-align: left;
   }
 
@@ -952,13 +971,19 @@ const pageTitle = "Share Salon";
       padding: 72px 0;
     }
 
-    .info-table dl {
+    .info-row {
       grid-template-columns: 1fr;
-      gap: 5px 0;
+      gap: 7px;
+      padding: 16px 0;
     }
 
-    .info-table dt {
-      margin-top: 12px;
+    .requirements-table dt {
+      font-size: 0.78rem;
+    }
+
+    .requirements-table dd {
+      font-size: 0.84rem;
+      line-height: 1.8;
     }
 
     .flow-item {
