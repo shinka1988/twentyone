@@ -1,5 +1,5 @@
 ---
-import { instagramUrl, lineUrl, heroImage } from "../data/salon";
+import { heroImage } from "../data/salon";
 ---
 
 <section id="top" class="hero" style={heroImage ? `--hero-image: url(${heroImage})` : undefined}>
@@ -11,17 +11,7 @@ import { instagramUrl, lineUrl, heroImage } from "../data/salon";
       </h1>
       <p>心まで満たされる、上質なサロン体験を。</p>
 
-      <div class="hero-btns">
-        <a href={lineUrl} target="_blank" rel="noopener noreferrer" class="btn btn-line">
-          LINEでお問い合わせ
-        </a>
-        <a href={instagramUrl} target="_blank" rel="noopener noreferrer" class="btn btn-insta">
-          Instagramでお問い合わせ
-        </a>
-        <a href="/tenant" class="btn btn-outline">
-          シェアサロンについて
-        </a>
-      </div>
+
     </div>
   </div>
 </section>

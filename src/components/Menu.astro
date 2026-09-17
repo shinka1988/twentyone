@@ -7,8 +7,8 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
 <section id="menu" class="section bg-light menu-section">
   <div class="container">
     <h2>MENU</h2>
-    <p class="subtitle">対応メニュー・施術例</p>
-    <p class="menu-hint">メニューをタップすると、詳細・写真をご覧いただけます。掲載内容はシェアサロンの利用を検討される方向けの参考情報です。</p>
+    <p class="subtitle">Twenty oneの施術メニュー</p>
+    <p class="menu-hint">現在はメニュー紹介のみとなります。施術のご予約受付は準備中です。</p>
 
     {categories.map((category) => (
       <div class="menu-category">
@@ -54,7 +54,7 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
         <h3 id="menu-modal-title"></h3>
         <p class="menu-modal-price"></p>
         <p class="menu-modal-description"></p>
-        <p class="menu-modal-contact-note">施術のご予約は現在受け付けていません。シェアサロンのご利用・見学についてはお問い合わせください。</p>      </div>
+        <p class="menu-modal-contact-note">現在はメニュー紹介のみとなります。施術のご予約受付は準備中です。</p>      </div>
     </div>
   </dialog>
 </section>

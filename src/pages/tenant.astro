@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
-import { salonName, instagramUrl, lineUrl } from "../data/salon";
+import { salonName, instagramUrl, lineUrl, shareSalonRecruiting, shareSalonStatus } from "../data/salon";
 
 const pageTitle = "Share Salon";
 ---
@@ -24,25 +24,16 @@ const pageTitle = "Share Salon";
           美容施術者のためのシェアサロンをご案内しています。
         </p>
 
-        <div class="hero-btns">
-          <a
-            href={lineUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-line"
-          >
-            LINEでお問い合わせ
-          </a>
-
-          <a
-            href={instagramUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-insta"
-          >
-            Instagramでお問い合わせ
-          </a>
-        </div>
+        {shareSalonRecruiting && (
+          <div class="hero-btns">
+            <a href={lineUrl} target="_blank" rel="noopener noreferrer" class="btn btn-line">
+              LINEでお問い合わせ
+            </a>
+            <a href={instagramUrl} target="_blank" rel="noopener noreferrer" class="btn btn-insta">
+              Instagramでお問い合わせ
+            </a>
+          </div>
+        )}
       </div>
     </section>
 
@@ -53,6 +44,11 @@ const pageTitle = "Share Salon";
 
         <h2>SHARE SALON</h2>
         <p class="subtitle">シェアサロンについて</p>
+
+        <div class:list={["recruitment-status", { "is-full": !shareSalonRecruiting }]} aria-label={`シェアサロン募集状況：${shareSalonStatus}`}>
+          <span class="recruitment-status-label">募集状況</span>
+          <span class="recruitment-status-value">{shareSalonStatus}</span>
+        </div>
 
         <p class="description">
           {salonName} では、シェアサロンを活用して
@@ -78,7 +74,7 @@ const pageTitle = "Share Salon";
           <div class="feature-item">
             <span class="feature-number">02</span>
             <span class="feature-text">
-              自分のお客様を持ち込んで利用可能
+              ご自身のお客様を迎えて施術できる
             </span>
           </div>
 
@@ -168,38 +164,48 @@ const pageTitle = "Share Salon";
         <h2>REQUIREMENTS</h2>
         <p class="subtitle">ご利用条件・料金</p>
 
+        <div class="plan-grid">
+          <article class="plan-card">
+            <p class="plan-label">PLAN 01</p>
+            <h3>歩合プラン</h3>
+            <p class="plan-price">¥38,000<span> / 月</span></p>
+            <p class="plan-detail">＋ 売上20%（税抜）</p>
+            <p class="plan-note">固定費を抑えながら、ご自身の売上に合わせて利用したい方向け。</p>
+          </article>
+
+          <article class="plan-card">
+            <p class="plan-label">PLAN 02</p>
+            <h3>固定プラン</h3>
+            <p class="plan-price">¥150,000<span> / 月</span></p>
+            <p class="plan-detail">（税抜）</p>
+            <p class="plan-note">毎月の固定費で、シンプルに利用したい方向け。</p>
+          </article>
+        </div>
+
+        <p class="plan-choice">ご自身の働き方に合わせて、2つのプランからお選びいただけます。</p>
+
         <div class="requirements-table">
           <dl>
             <div class="info-row">
               <dt>利用形態</dt>
-              <dd>シェアサロン</dd>
+              <dd>シェアサロン・ブース貸し</dd>
             </div>
-
-            <div class="info-row info-row-price">
-              <dt>利用料金</dt>
-              <dd>固定席 月額 ¥38,000（税抜）＋ 売上歩合20%</dd>
-            </div>
-
             <div class="info-row">
               <dt>利用時間</dt>
               <dd>営業時間内で、ご自身の予約に合わせてご利用いただけます。</dd>
             </div>
-
             <div class="info-row">
               <dt>予約・集客</dt>
               <dd>原則としてご自身で管理していただきます。</dd>
             </div>
-
             <div class="info-row">
               <dt>決済・会計</dt>
               <dd>原則としてご自身で管理していただきます。</dd>
             </div>
-
             <div class="info-row">
               <dt>持ち込み</dt>
               <dd>ご自身で使用する施術道具・材料等は基本的にお持ち込みください。</dd>
             </div>
-
             <div class="info-row">
               <dt>所在地</dt>
               <dd>札幌市豊平区平岸<br />南北線「南平岸駅」周辺</dd>
@@ -273,7 +279,6 @@ const pageTitle = "Share Salon";
     <!-- FAQ -->
     <section class="section">
       <div class="container">
-
         <h2>FAQ</h2>
         <p class="subtitle">よくあるご質問</p>
 
@@ -304,8 +309,8 @@ const pageTitle = "Share Salon";
             <div class="faq-a">
               <span class="a-icon">A.</span>
               <span>
-                固定席月額¥38,000（税抜）に加えて、
-                売上の20%を歩合としていただく料金形態となっています。
+                月額¥38,000（税抜）＋売上20%の歩合プラン、
+                または月額¥150,000（税抜）の固定プランからお選びいただけます。
               </span>
             </div>
           </div>
@@ -352,7 +357,7 @@ const pageTitle = "Share Salon";
             <div class="faq-a">
               <span class="a-icon">A.</span>
               <span>
-                ネイル・アイブロウなど、美容施術を行う方を中心に募集しています。
+                美容施術を行う方を中心に募集しています。
                 施術内容や必要な設備については事前にご相談ください。
               </span>
             </div>
@@ -426,33 +431,25 @@ const pageTitle = "Share Salon";
         <h2>CONTACT</h2>
         <p class="subtitle">見学・ご相談はこちら</p>
 
-        <p class="description contact-text">
-          シェアサロンについてのご質問、
-          サロン見学、料金や利用条件についてのお問い合わせは、
-          LINEまたはInstagramよりお気軽にお問い合わせください。
-        </p>
+        {shareSalonRecruiting ? (
+          <>
+            <p class="description contact-text">
+              シェアサロンについてのご質問、
+              サロン見学、料金や利用条件についてのお問い合わせは、
+              LINEまたはInstagramよりお気軽にお問い合わせください。
+            </p>
 
-        <div class="hero-btns">
-
-          <a
-            href={lineUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-line"
-          >
-            LINEでお問い合わせ
-          </a>
-
-          <a
-            href={instagramUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-insta"
-          >
-            Instagramでお問い合わせ
-          </a>
-
-        </div>
+            <div class="hero-btns">
+              <a href={lineUrl} target="_blank" rel="noopener noreferrer" class="btn btn-line">LINEでお問い合わせ</a>
+              <a href={instagramUrl} target="_blank" rel="noopener noreferrer" class="btn btn-insta">Instagramでお問い合わせ</a>
+            </div>
+          </>
+        ) : (
+          <div class="recruitment-closed">
+            <p class="recruitment-closed-title">現在、シェアサロンの新規募集を停止しております。</p>
+            <p>空きが出ましたら募集を再開いたします。</p>
+          </div>
+        )}
 
       </div>
     </section>
@@ -615,6 +612,165 @@ const pageTitle = "Share Salon";
 
 
   /* =========================
+     RECRUITMENT STATUS
+  ========================= */
+
+  .recruitment-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 auto 34px;
+    padding: 9px 16px;
+    border: 1px solid #d8c8c6;
+    background: #fff;
+    color: #756a6a;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+  }
+
+  .recruitment-status-label {
+    color: #aaa0a0;
+  }
+
+  .recruitment-status-value {
+    color: #a98f91;
+    font-weight: 500;
+  }
+
+  .recruitment-status.is-full {
+    border-color: #ddd;
+  }
+
+  .recruitment-status.is-full .recruitment-status-value {
+    color: #888;
+  }
+
+  /* =========================
+     SHARE SALON PLANS
+  ========================= */
+
+  .plan-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .plan-card {
+    padding: 30px 26px;
+    border: 1px solid #e9e1df;
+    background: #fff;
+    text-align: left;
+  }
+
+  .plan-label {
+    margin: 0 0 10px;
+    color: #a98f91;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+  }
+
+  .plan-card h3 {
+    margin: 0 0 18px;
+    color: #4a4a4a;
+    font-size: 1.05rem;
+    font-weight: 500;
+  }
+
+  .plan-price {
+    margin: 0 0 6px;
+    color: #4f4a4b;
+    font-size: 1.5rem;
+    letter-spacing: 0.03em;
+  }
+
+  .plan-price span {
+    font-size: 0.72rem;
+    color: #999;
+    letter-spacing: 0.08em;
+  }
+
+  .plan-detail {
+    margin: 0 0 16px;
+    color: #8d8181;
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  .plan-note {
+    margin: 0;
+    color: #666;
+    font-size: 0.8rem;
+    line-height: 1.8;
+  }
+
+  .plan-choice {
+    margin: 22px auto 38px;
+    color: #777;
+    font-size: 0.82rem;
+    text-align: center;
+  }
+
+  .requirements-table {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .requirements-table dl {
+    margin: 0;
+    font-size: 0.88rem;
+  }
+
+  .requirements-table .info-row {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 28px;
+    padding: 19px 0;
+    border-bottom: 1px solid #eee7e4;
+  }
+
+  .requirements-table .info-row:first-child {
+    border-top: 1px solid #eee7e4;
+  }
+
+  .requirements-table dt {
+    margin: 0;
+    color: #9b8b8b;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+  }
+
+  .requirements-table dd {
+    margin: 0;
+    color: #555052;
+    line-height: 1.9;
+  }
+
+  .recruitment-closed {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 28px 24px;
+    border: 1px solid #e9e1df;
+    background: #fff;
+    color: #777;
+    font-size: 0.84rem;
+    line-height: 1.9;
+  }
+
+  .recruitment-closed p {
+    margin: 0;
+  }
+
+  .recruitment-closed-title {
+    margin-bottom: 5px !important;
+    color: #555;
+    font-weight: 500;
+  }
+
+  /* =========================
      JOB / TARGET
   ========================= */
 
@@ -653,51 +809,6 @@ const pageTitle = "Share Salon";
     line-height: 1.7;
   }
 
-
-  /* =========================
-     INFO TABLE
-  ========================= */
-
-  .requirements-table {
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: left;
-  }
-
-  .requirements-table dl {
-    margin: 0;
-    font-size: 0.88rem;
-  }
-
-  .info-row {
-    display: grid;
-    grid-template-columns: 150px 1fr;
-    gap: 28px;
-    padding: 19px 0;
-    border-bottom: 1px solid #eee7e4;
-  }
-
-  .info-row:first-child {
-    border-top: 1px solid #eee7e4;
-  }
-
-  .requirements-table dt {
-    margin: 0;
-    color: #9b8b8b;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-  }
-
-  .requirements-table dd {
-    margin: 0;
-    color: #555052;
-    line-height: 1.9;
-  }
-
-  .info-row-price dd {
-    color: #4f4a4b;
-    letter-spacing: 0.02em;
-  }
 
   .note {
     max-width: 700px;
@@ -971,7 +1082,7 @@ const pageTitle = "Share Salon";
       padding: 72px 0;
     }
 
-    .info-row {
+    .requirements-table .info-row {
       grid-template-columns: 1fr;
       gap: 7px;
       padding: 16px 0;
@@ -984,6 +1095,14 @@ const pageTitle = "Share Salon";
     .requirements-table dd {
       font-size: 0.84rem;
       line-height: 1.8;
+    }
+
+    .plan-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .plan-card {
+      padding: 26px 22px;
     }
 
     .flow-item {
