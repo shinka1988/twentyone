@@ -168,16 +168,17 @@ const pageTitle = "Share Salon";
           <article class="plan-card">
             <p class="plan-label">PLAN 01</p>
             <h3>歩合プラン</h3>
-            <p class="plan-price">¥38,000<span> / 月</span></p>
+            <p class="plan-price">¥38,000<span> / 月（税抜）</span></p>
             <p class="plan-detail">＋ 売上20%（税抜）</p>
+            <p class="plan-utility">＋ 光熱費（別途・金額未定）</p>
             <p class="plan-note">固定費を抑えながら、ご自身の売上に合わせて利用したい方向け。</p>
           </article>
 
           <article class="plan-card">
             <p class="plan-label">PLAN 02</p>
             <h3>固定プラン</h3>
-            <p class="plan-price">¥150,000<span> / 月</span></p>
-            <p class="plan-detail">（税抜）</p>
+            <p class="plan-price">¥150,000<span> / 月（税抜）</span></p>
+            <p class="plan-utility">＋ 光熱費（別途・金額未定）</p>
             <p class="plan-note">毎月の固定費で、シンプルに利用したい方向け。</p>
           </article>
         </div>
@@ -309,8 +310,8 @@ const pageTitle = "Share Salon";
             <div class="faq-a">
               <span class="a-icon">A.</span>
               <span>
-                月額¥38,000（税抜）＋売上20%の歩合プラン、
-                または月額¥150,000（税抜）の固定プランからお選びいただけます。
+                月額¥38,000（税抜）＋売上20%（税抜）の歩合プラン、
+                または月額¥150,000（税抜）の固定プランからお選びいただけます。いずれも光熱費が別途となります。
               </span>
             </div>
           </div>
@@ -693,6 +694,14 @@ const pageTitle = "Share Salon";
 
   .plan-detail {
     margin: 0 0 16px;
+    color: #8d8181;
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  .plan-utility {
+    margin: -6px 0 16px;
     color: #8d8181;
     font-size: 0.9rem;
     font-weight: 500;
