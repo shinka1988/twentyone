@@ -7,7 +7,7 @@ import Menu from "../components/Menu.astro";
 import Gallery from "../components/Gallery.astro";
 import Access from "../components/Access.astro";
 import Footer from "../components/Footer.astro";
-import { salonName } from "../data/salon";
+import { salonName, shareSalonRecruiting } from "../data/salon";
 ---
 
 <Layout title={salonName}>
@@ -16,6 +16,20 @@ import { salonName } from "../data/salon";
   <About />
   <Menu />
   <Gallery />
+
+  {shareSalonRecruiting && (
+    <section class="section share-salon-cta" aria-labelledby="share-salon-cta-title">
+      <div class="container">
+        <p class="share-salon-cta-label">SHARE SALON</p>
+        <h2 id="share-salon-cta-title">シェアサロンをご検討の方へ</h2>
+        <p class="share-salon-cta-text">
+          自分らしい働き方を叶える、Twenty oneのシェアサロンをご案内しています。
+        </p>
+        <a class="share-salon-cta-link" href="/tenant/">シェアサロンについて見る <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  )}
+
   <Access />
   <Footer />
 </Layout>

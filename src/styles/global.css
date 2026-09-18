@@ -171,20 +171,42 @@ h2 {
 ======================================== */
 
 .hero {
+  position: relative;
   display: flex;
   min-height: 78vh;
   align-items: center;
   justify-content: center;
-  padding: 50px 20px;
+  padding: 0;
   background: var(--warm-white);
   background-image: var(--hero-image);
-  background-position: center;
+  background-position: center center;
   background-size: cover;
+  background-repeat: no-repeat;
   text-align: center;
 }
 
 .hero-content {
+  position: relative;
+  z-index: 1;
   width: min(720px, 100%);
+}
+
+.share-hero::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: rgba(255, 252, 249, 0.58);
+}
+
+.share-hero .hero-content {
+  max-width: 680px;
+  padding: 72px 40px;
+}
+
+.share-hero .hero-label,
+.share-hero h1,
+.share-hero .hero-content > p {
+  text-shadow: 0 1px 10px rgba(255, 255, 255, 0.65);
 }
 
 .hero h1 {
@@ -353,6 +375,46 @@ a.btn.btn-outline:hover {
 
 .menu-category:last-child {
   margin-bottom: 0;
+}
+
+.menu-share-cta {
+  max-width: 620px;
+  margin: 8px auto 0;
+  padding: 28px 24px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
+.menu-share-cta-label {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+}
+
+.menu-share-cta-text {
+  margin: 0 0 18px;
+  color: #777;
+  font-size: 0.86rem;
+}
+
+.menu-share-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border: 1px solid #cfc5c2;
+  background: #fff;
+  color: #5e5555;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.menu-share-cta-link:hover {
+  opacity: 0.7;
+  transform: translateY(-1px);
 }
 
 .category-title {
@@ -703,6 +765,125 @@ a.btn.btn-outline:hover {
   line-height: 1.9;
 }
 
+
+/* ========================================
+   Share salon CTA on TOP
+======================================== */
+
+.share-salon-cta {
+  background: var(--warm-white);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.share-salon-cta-label {
+  margin: 0 0 10px;
+  color: var(--accent);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+}
+
+.share-salon-cta h2 {
+  margin-bottom: 12px;
+}
+
+.share-salon-cta-text {
+  max-width: 600px;
+  margin: 0 auto 28px;
+  color: #777;
+  font-size: 0.9rem;
+  line-height: 1.9;
+}
+
+.share-salon-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 22px;
+  border: 1px solid #cfc5c2;
+  background: #fff;
+  color: #5e5555;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.share-salon-cta-link:hover {
+  opacity: 0.7;
+  transform: translateY(-1px);
+}
+
+/* Share salon access */
+.access-lead {
+  margin: -18px auto 30px;
+  color: #6f6666;
+  font-size: 0.86rem;
+  line-height: 1.8;
+}
+
+.share-access-section {
+  background: var(--warm-white);
+}
+
+.share-access-card {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 30px 34px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.share-access-card dl {
+  margin: 0;
+}
+
+.share-access-row {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 24px;
+  padding: 18px 0;
+  border-bottom: 1px solid #eee7e4;
+}
+
+.share-access-row:first-child {
+  padding-top: 0;
+}
+
+.share-access-row:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.share-access-row dt {
+  color: #756a6a;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+}
+
+.share-access-row dd {
+  margin: 0;
+  color: #4f4646;
+  font-size: 0.88rem;
+  line-height: 1.8;
+}
+
+.share-access-map {
+  width: 100%;
+  margin-top: 24px;
+  aspect-ratio: 16 / 8.5;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #f7f5f3;
+}
+
+.share-access-map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 /* ========================================
    Responsive
 ======================================== */
@@ -764,9 +945,24 @@ a.btn.btn-outline:hover {
     padding: 72px 0;
   }
 
+  .access-lead {
+    margin-top: -14px;
+    padding: 0 12px;
+    font-size: 0.82rem;
+  }
+
+  .share-access-card {
+    padding: 24px 20px;
+  }
+
+  .share-access-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 16px 0;
+  }
+
   .hero {
-    min-height: 72vh;
-    padding: 60px 20px;
+    min-height: 74vh;
   }
 
   .hero h1 {
@@ -859,4 +1055,17 @@ a.btn.btn-outline:hover {
   .access-map iframe {
     height: 300px;
   }
+}
+
+/* Accessibility helper for the image-led hero. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

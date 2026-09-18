@@ -2,16 +2,11 @@
 import { heroImage } from "../data/salon";
 ---
 
-<section id="top" class="hero" style={heroImage ? `--hero-image: url(${heroImage})` : undefined}>
-  <div class="hero-content">
-    <div class="hero-copy">
-      <h1>
-        目元と指先から輝く、<br />
-        あなただけの特別。
-      </h1>
-      <p>心まで満たされる、上質なサロン体験を。</p>
-
-
-    </div>
-  </div>
+<section
+  id="top"
+  class="hero hero-image"
+  style={heroImage ? `--hero-image: url(${heroImage})` : undefined}
+  aria-label="Twenty one"
+>
+  <span class="sr-only">Twenty one</span>
 </section>

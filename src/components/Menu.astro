@@ -1,5 +1,6 @@
 ---
 import { menuItems } from "../data/menu";
+import { shareSalonRecruiting } from "../data/salon";
 
 const categories = [...new Set(menuItems.map((item) => item.category))];
 ---
@@ -41,6 +42,14 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
         </div>
       </div>
     ))}
+
+    {shareSalonRecruiting && (
+      <div class="menu-share-cta">
+        <p class="menu-share-cta-label">SHARE SALON</p>
+        <p class="menu-share-cta-text">美容のお仕事をする場所をお探しの方へ</p>
+        <a href="/tenant/" class="menu-share-cta-link">シェアサロンについて見る <span aria-hidden="true">→</span></a>
+      </div>
+    )}
   </div>
 
   <dialog class="menu-modal" aria-labelledby="menu-modal-title">
