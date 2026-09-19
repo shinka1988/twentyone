@@ -10,22 +10,17 @@ const pageTitle = "Share Salon";
   <Header />
 
     <!-- メインビジュアル -->
-    <section class="hero share-hero" style="--hero-image: url('/images/space/space-01.jpg')">
-      <div class="hero-content">
-        <p class="hero-label">SHARE SALON</p>
-
-        <h1>
-          シェアサロンという<br />
-          働き方。
-        </h1>
-
-        <p>
+    <section class="share-hero-editorial" aria-label="シェアサロン">
+      <div class="share-hero-editorial-copy">
+        <p class="share-hero-editorial-label">SHARE SALON</p>
+        <h1>シェアサロンという<br />働き方。</h1>
+        <p class="share-hero-editorial-text">
           自分らしい働き方を叶える、<br />
           美容施術者のためのシェアサロンをご案内しています。
         </p>
 
         {shareSalonRecruiting && (
-          <div class="hero-btns">
+          <div class="hero-btns share-hero-editorial-buttons">
             <a href={lineUrl} target="_blank" rel="noopener noreferrer" class="btn btn-line">
               LINEでお問い合わせ
             </a>
@@ -34,6 +29,9 @@ const pageTitle = "Share Salon";
             </a>
           </div>
         )}
+      </div>
+      <div class="share-hero-editorial-photo">
+        <img src="/images/space/space-01.jpg" alt="シェアサロンの明るい店内" fetchpriority="high" />
       </div>
     </section>
 

@@ -1069,3 +1069,174 @@ a.btn.btn-outline:hover {
   white-space: nowrap;
   border: 0;
 }
+
+/* ========================================
+   Responsive hero refinements
+======================================== */
+.hero-overlay-copy {
+  display: none;
+}
+
+.share-hero-editorial {
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  min-height: 72vh;
+  background: #fff;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.share-hero-editorial-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 72px clamp(28px, 6vw, 90px);
+  text-align: left;
+}
+
+.share-hero-editorial-label {
+  margin: 0 0 22px;
+  color: #857b7b;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+}
+
+.share-hero-editorial-copy h1 {
+  margin: 0 0 24px;
+  color: #403b3c;
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-weight: 300;
+  line-height: 1.55;
+  letter-spacing: 0.14em;
+}
+
+.share-hero-editorial-text {
+  margin: 0 0 34px;
+  color: #716969;
+  font-size: 0.92rem;
+  line-height: 2.05;
+}
+
+.share-hero-editorial-buttons {
+  justify-content: flex-start;
+}
+
+.share-hero-editorial-photo {
+  min-height: 72vh;
+  overflow: hidden;
+}
+
+.share-hero-editorial-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 640px) {
+  .hero-image {
+    min-height: 74svh;
+    background-image: var(--hero-mobile-image) !important;
+    background-position: center center;
+    background-size: 100% 100%;
+  }
+
+  .hero-image::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background: rgba(255,255,255,0.04);
+  }
+
+  .hero-overlay-copy {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    width: min(92%, 360px);
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+    padding: 0 8px 8px;
+    color: #3f393a;
+    text-align: center;
+  }
+
+  .hero-overlay-brand {
+    margin: 0 0 10px;
+    font-family: "Times New Roman", serif;
+    font-size: clamp(2.8rem, 15vw, 4rem);
+    font-style: italic;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-overlay-subtitle {
+    margin: 0 0 20px;
+    font-size: 0.76rem;
+    letter-spacing: 0.28em;
+  }
+
+  .hero-overlay-line {
+    width: 34px;
+    height: 1px;
+    margin-bottom: 20px;
+    background: currentColor;
+    opacity: 0.65;
+  }
+
+  .hero-overlay-message {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 2.05;
+    letter-spacing: 0.14em;
+  }
+
+  .share-hero-editorial {
+    display: flex;
+    min-height: 0;
+    flex-direction: column-reverse;
+    border-top: 0;
+  }
+
+  .share-hero-editorial-photo {
+    min-height: 46svh;
+    height: 46svh;
+  }
+
+  .share-hero-editorial-photo img {
+    object-position: center;
+  }
+
+  .share-hero-editorial-copy {
+    padding: 42px 28px 46px;
+    text-align: left;
+  }
+
+  .share-hero-editorial-label {
+    margin-bottom: 16px;
+    font-size: 0.68rem;
+  }
+
+  .share-hero-editorial-copy h1 {
+    margin-bottom: 18px;
+    font-size: 1.25rem;
+    line-height: 1.65;
+    letter-spacing: 0.08em;
+  }
+
+  .share-hero-editorial-text {
+    margin-bottom: 28px;
+    font-size: 0.8rem;
+    line-height: 1.85;
+  }
+
+  .share-hero-editorial-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .share-hero-editorial-buttons .btn {
+    width: 100%;
+    min-width: 0;
+  }
+}

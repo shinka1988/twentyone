@@ -1,12 +1,18 @@
 ---
-import { heroImage } from "../data/salon";
+import { heroImage, heroMobileImage } from "../data/salon";
 ---
 
 <section
   id="top"
   class="hero hero-image"
-  style={heroImage ? `--hero-image: url(${heroImage})` : undefined}
+  style={heroImage ? `--hero-image: url(${heroImage}); --hero-mobile-image: url(${heroMobileImage})` : undefined}
   aria-label="Twenty one"
 >
+  <div class="hero-overlay-copy">
+    <p class="hero-overlay-brand">Twenty one</p>
+    <p class="hero-overlay-subtitle">BEAUTY &amp; SHARE SALON</p>
+    <span class="hero-overlay-line" aria-hidden="true"></span>
+    <p class="hero-overlay-message">美しさをつなぎ、<br />もっと自由に。</p>
+  </div>
   <span class="sr-only">Twenty one</span>
 </section>
