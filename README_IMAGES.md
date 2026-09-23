@@ -1,4 +1,4 @@
-# Twenty one サイトの写真追加ガイド
+# twenty one サイトの写真追加ガイド
 
 写真は `src/assets/images/` ではなく、Astro の公開用 `public/images/` に置く想定です。
 

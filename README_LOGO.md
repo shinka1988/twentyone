@@ -1,6 +1,6 @@
 # ロゴについて
 
-`public/images/logo.jpg` に Twenty one のロゴを配置しています。
+`public/images/logo.jpg` に twenty one のロゴを配置しています。
 
 - ヘッダー：58px（スマホ 52px）
 - フッター：74px

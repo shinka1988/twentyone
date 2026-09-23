@@ -5,7 +5,7 @@ interface Props {
   title?: string;
 }
 
-const { title = "Twenty one" } = Astro.props;
+const { title = "twenty one" } = Astro.props;
 ---
 
 <!doctype html>
@@ -13,9 +13,9 @@ const { title = "Twenty one" } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={`${title} | Twenty one。札幌市豊平区平岸のシェアサロン。`} />
+    <meta name="description" content={`${title} | twenty one。札幌市豊平区平岸のシェアサロン。`} />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content="Twenty one | アイブロウ・ネイルサロン" />
+    <meta property="og:description" content="twenty one | アイブロウ・ネイルサロン" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ja_JP" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -25,7 +25,35 @@ const { title = "Twenty one" } = Astro.props;
     <title>{title}</title>
   </head>
 
-  <body>
+  <body class:list={{ "has-intro-transition": Astro.url.pathname === "/" }}>
+    {Astro.url.pathname === "/" && (
+      <div class="intro-transition" aria-hidden="true">
+        <img src="/images/intro-logo.jpg" alt="" />
+      </div>
+    )}
+
     <slot />
+
+    {Astro.url.pathname === "/" && (
+      <script is:inline>
+        const intro = document.querySelector(".intro-transition");
+        const revealIntro = () => {
+          if (!intro) return;
+          window.setTimeout(() => {
+            intro.classList.add("is-hidden");
+            window.setTimeout(() => {
+              document.body.classList.remove("has-intro-transition");
+              intro.remove();
+            }, 1400);
+          }, 550);
+        };
+
+        if (document.readyState === "complete") {
+          revealIntro();
+        } else {
+          window.addEventListener("load", revealIntro, { once: true });
+        }
+      </script>
+    )}
   </body>
 </html>

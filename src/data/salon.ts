@@ -1,4 +1,4 @@
-export const salonName = "Twenty one";
+export const salonName = "twenty one";
 
 export const instagramUrl =
   "https://www.instagram.com/eyebrow.nail_21/";
@@ -15,5 +15,5 @@ export const shareSalonStatus = shareSalonRecruiting ? "募集中" : "満席";
 // export const heroImage = "/images/hero/main.jpg";
 // export const aboutImage = "/images/salon/about.jpg";
 export const heroImage: string | undefined = "/images/hero/twenty-one-top.jpg";
-export const heroMobileImage: string = "/images/hero/twenty-one-top-clean.jpg";
+export const heroMobileImage: string = "/images/hero/twenty-one-top-mobile.jpg";
 export const aboutImage: string | undefined = undefined;

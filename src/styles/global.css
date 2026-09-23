@@ -1,5 +1,5 @@
 /* ========================================
-   Twenty one — Global styles
+   twenty one — Global styles
    白・余白・細い線・繊細なロゴ
 ======================================== */
 
@@ -191,6 +191,24 @@ h2 {
   width: min(720px, 100%);
 }
 
+/* Mobile hero copy: the desktop wording is baked into the desktop hero image,
+   while mobile uses the clean photo plus the same wording as live text. */
+.hero-copy {
+  display: none;
+}
+
+@font-face {
+  font-family: "TwentyOne Script";
+  src: url("/fonts/twenty-one-script.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TwentyOne Serif";
+  src: url("/fonts/twenty-one-serif.ttc") format("truetype-collection");
+  font-display: swap;
+}
+
 .share-hero::before {
   position: absolute;
   inset: 0;
@@ -315,6 +333,12 @@ a.btn.btn-outline:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* 脱毛メニューの図解は人物全体が見えるように表示 */
+.menu-category:first-of-type .menu-image img {
+  object-fit: contain;
+  background: #faf8f5;
 }
 
 .about-copy .description {
@@ -963,6 +987,9 @@ a.btn.btn-outline:hover {
 
   .hero {
     min-height: 74vh;
+    background-image: var(--hero-mobile-image);
+    background-position: center center;
+    background-size: cover;
   }
 
   .hero h1 {
@@ -1057,6 +1084,43 @@ a.btn.btn-outline:hover {
   }
 }
 
+
+/* ========================================
+   Home intro transition
+======================================== */
+.intro-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 1.4s ease, visibility 0s linear 1.4s;
+}
+
+.intro-transition img {
+  display: block;
+  width: min(44vw, 300px);
+  height: auto;
+}
+
+.intro-transition.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+body.has-intro-transition {
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .intro-transition img {
+    width: min(62vw, 300px);
+  }
+}
+
 /* Accessibility helper for the image-led hero. */
 .sr-only {
   position: absolute;
@@ -1073,9 +1137,6 @@ a.btn.btn-outline:hover {
 /* ========================================
    Responsive hero refinements
 ======================================== */
-.hero-overlay-copy {
-  display: none;
-}
 
 .share-hero-editorial {
   display: grid;
@@ -1121,6 +1182,85 @@ a.btn.btn-outline:hover {
   justify-content: flex-start;
 }
 
+.share-hero-editorial .recruitment-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  width: fit-content;
+  margin: 0 0 22px;
+  padding: 7px 12px;
+  border: 1px solid #ddd4d2;
+  background: rgba(255,255,255,0.82);
+}
+
+.share-hero-editorial .recruitment-status-label {
+  color: #99908f;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+}
+
+.share-hero-editorial .recruitment-status-value {
+  color: #8f7778;
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+}
+
+.share-hero-editorial .recruitment-status.is-full .recruitment-status-value {
+  color: #888;
+}
+
+.tenant-page .faq-item {
+  margin-bottom: 14px;
+  padding: 0;
+  border-bottom: 1px solid #eee6e3;
+}
+
+.tenant-page .faq-q {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 18px 34px 18px 0;
+  margin: 0;
+  cursor: pointer;
+  list-style: none;
+  font-weight: 400;
+}
+
+.tenant-page .faq-q::-webkit-details-marker {
+  display: none;
+}
+
+.tenant-page .faq-q::marker {
+  display: none;
+}
+
+.tenant-page .faq-question-text {
+  flex: 1;
+}
+
+.tenant-page .faq-toggle {
+  position: absolute;
+  right: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #a98f91;
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.tenant-page .faq-item[open] .faq-toggle {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.tenant-page .faq-a {
+  padding: 0 8px 20px 0;
+  margin: 0;
+}
+
+
 .share-hero-editorial-photo {
   min-height: 72vh;
   overflow: hidden;
@@ -1138,57 +1278,13 @@ a.btn.btn-outline:hover {
   .hero-image {
     min-height: 74svh;
     background-image: var(--hero-mobile-image) !important;
-    background-position: center center;
-    background-size: 100% 100%;
+    background-position: center top;
+    background-size: 100% auto;
+    background-color: var(--warm-white);
   }
 
   .hero-image::after {
-    position: absolute;
-    inset: 0;
-    content: "";
-    background: rgba(255,255,255,0.04);
-  }
-
-  .hero-overlay-copy {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    width: min(92%, 360px);
-    flex-direction: column;
-    align-items: center;
-    margin-top: 0;
-    padding: 0 8px 8px;
-    color: #3f393a;
-    text-align: center;
-  }
-
-  .hero-overlay-brand {
-    margin: 0 0 10px;
-    font-family: "Times New Roman", serif;
-    font-size: clamp(2.8rem, 15vw, 4rem);
-    font-style: italic;
-    letter-spacing: 0.02em;
-  }
-
-  .hero-overlay-subtitle {
-    margin: 0 0 20px;
-    font-size: 0.76rem;
-    letter-spacing: 0.28em;
-  }
-
-  .hero-overlay-line {
-    width: 34px;
-    height: 1px;
-    margin-bottom: 20px;
-    background: currentColor;
-    opacity: 0.65;
-  }
-
-  .hero-overlay-message {
-    margin: 0;
-    font-size: 1rem;
-    line-height: 2.05;
-    letter-spacing: 0.14em;
+    display: none;
   }
 
   .share-hero-editorial {
@@ -1230,6 +1326,19 @@ a.btn.btn-outline:hover {
     line-height: 1.85;
   }
 
+  .share-hero-editorial .recruitment-status {
+    margin-bottom: 18px;
+    padding: 6px 10px;
+  }
+
+  .share-hero-editorial .recruitment-status-label {
+    font-size: 0.62rem;
+  }
+
+  .share-hero-editorial .recruitment-status-value {
+    font-size: 0.7rem;
+  }
+
   .share-hero-editorial-buttons {
     flex-direction: column;
     align-items: stretch;
@@ -1239,4 +1348,416 @@ a.btn.btn-outline:hover {
     width: 100%;
     min-width: 0;
   }
+}
+
+/* ========================================
+   Hair removal detail selector
+======================================== */
+.hair-removal-panel {
+  padding: 30px;
+}
+
+.hair-removal-head {
+  padding-right: 42px;
+}
+
+.hair-removal-head h3 {
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+.hair-removal-head p:last-child,
+.hair-section-intro p:last-child {
+  margin: 0;
+  color: #777;
+  font-size: 0.86rem;
+  line-height: 1.9;
+}
+
+.hair-removal-gender {
+  display: flex;
+  gap: 8px;
+  margin: 24px 0 16px;
+}
+
+.hair-choice {
+  min-width: 100px;
+  padding: 10px 18px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: #fff;
+  color: #777;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.hair-choice.is-active {
+  border-color: #b79d9a;
+  background: #f8f1ef;
+  color: #5e5555;
+}
+
+.hair-removal-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  color: #a08f8c;
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+}
+
+.hair-removal-breadcrumb button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+
+.hair-removal-gender-overview {
+  display: grid;
+  grid-template-columns: minmax(210px, 0.8fr) 1.2fr;
+  gap: 22px;
+  align-items: center;
+  margin: 0 0 22px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  background: #fcfaf8;
+}
+
+.hair-gender-overview-image {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #faf8f5;
+}
+
+.hair-gender-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.hair-gender-overview-copy h4 {
+  margin: 0 0 8px;
+  color: #4f4a4b;
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+.hair-gender-overview-copy p:last-child {
+  margin: 0;
+  color: #777;
+  font-size: 0.82rem;
+  line-height: 1.9;
+}
+
+.hair-choice-card {
+  position: relative;
+}
+
+.hair-choice-number {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 2;
+  min-width: 27px;
+  padding: 3px 6px;
+  border: 1px solid rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.9);
+  color: #756967;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+.hair-removal-overview {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.9fr) 1.1fr;
+  gap: 22px;
+  align-items: center;
+  margin-bottom: 22px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  background: #fcfaf8;
+}
+
+.hair-removal-overview-image {
+  aspect-ratio: 1.05 / 1;
+  overflow: hidden;
+  background: #f7f0ed;
+}
+
+.hair-removal-overview-image img,
+.hair-choice-card-image img,
+.hair-detail-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hair-step-label {
+  margin: 0 0 6px;
+  color: #a99291;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+}
+
+.hair-removal-overview h4,
+.hair-section-intro h4,
+.hair-detail-title {
+  margin: 0 0 8px;
+  color: #4f4a4b;
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+.hair-removal-overview p:not(.hair-step-label),
+.hair-detail-description {
+  margin: 0;
+  color: #777;
+  font-size: 0.82rem;
+  line-height: 1.9;
+}
+
+.hair-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.hair-choice-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: #fff;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.hair-choice-card:hover {
+  border-color: #c6aeab;
+  transform: translateY(-1px);
+}
+
+.hair-choice-card-image {
+  display: block;
+  aspect-ratio: 1.18 / 1;
+  overflow: hidden;
+  background: #faf8f5;
+}
+
+.hair-choice-card-image img {
+  object-fit: contain;
+}
+
+.hair-choice-card-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 12px;
+}
+
+.hair-choice-card-copy strong {
+  color: #4f4a4b;
+  font-size: 0.84rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.hair-choice-card-copy small {
+  color: #888;
+  font-size: 0.72rem;
+  line-height: 1.65;
+}
+
+.hair-vio-note {
+  margin: 14px 0 0;
+  color: #999;
+  font-size: 0.72rem;
+}
+
+.hair-section-intro {
+  margin-bottom: 18px;
+}
+
+.hair-detail {
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) 1fr;
+  gap: 28px;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid var(--line);
+  background: #fcfaf8;
+}
+
+.hair-detail-image-wrap {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #faf8f5;
+}
+
+.hair-detail-image {
+  object-fit: contain;
+}
+
+.hair-back {
+  margin-top: 24px;
+  padding: 9px 0;
+  border: 0;
+  border-bottom: 1px solid #cfc5c2;
+  background: transparent;
+  color: #8b7b79;
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .hair-removal-panel {
+    padding: 24px 18px 22px;
+  }
+
+  .hair-removal-gender-overview,
+  .hair-removal-overview {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .hair-choice-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hair-detail {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .hair-gender-overview-image {
+    aspect-ratio: 4 / 5;
+    max-height: 360px;
+  }
+
+  .hair-choice-card-image {
+    aspect-ratio: 1 / 1;
+  }
+
+  .hair-detail-image-wrap {
+    aspect-ratio: 1 / 1;
+    max-height: 420px;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .hero {
+    min-height: 100svh;
+    background-image: var(--hero-mobile-image);
+    background-position: center center;
+    background-size: cover;
+  }
+
+  .hero-copy {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 24px;
+    color: #575153;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .hero-copy-title {
+    width: min(76vw, 430px);
+    margin-top: -5vh;
+    line-height: 0;
+  }
+
+  .hero-copy-title img {
+    display: block;
+    width: 100%;
+    height: auto;
+    opacity: .96;
+  }
+
+  .hero-copy-subtitle {
+    margin-top: 22px;
+    font-family: "TwentyOne Serif", "Times New Roman", serif;
+    font-size: clamp(.75rem, 3.1vw, 1rem);
+    letter-spacing: .25em;
+    line-height: 1.5;
+  }
+
+  .hero-copy-line {
+    width: 34px;
+    height: 1px;
+    margin-top: 26px;
+    background: rgba(87,81,83,.75);
+  }
+
+  .hero-copy-tagline {
+    margin-top: 28px;
+    font-family: "TwentyOne Serif", "Hiragino Mincho ProN", serif;
+    font-size: clamp(1.05rem, 4.5vw, 1.35rem);
+    font-weight: 400;
+    letter-spacing: .16em;
+    line-height: 2.05;
+    text-shadow: 0 1px 8px rgba(255,255,255,.55);
+  }
+
+  .hero-copy-scroll {
+    position: absolute;
+    bottom: 7.5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-copy-scroll span {
+    display: block;
+    width: 1px;
+    height: 28px;
+    background: rgba(87,81,83,.72);
+  }
+
+  .hero-copy-scroll small {
+    font-family: "TwentyOne Serif", "Times New Roman", serif;
+    font-size: .55rem;
+    letter-spacing: .34em;
+  }
+}
+
+
+
+.hair-removal-breadcrumb .hair-breadcrumb-detail { color: #8f7f7c; }
+
+/* Hair removal V16: keep detailed body images centered and uncropped */
+.hair-choice-card-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #faf8f5;
+}
+.hair-choice-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
 }

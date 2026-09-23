@@ -1,8 +1,8 @@
-# Twenty one — project notes
+# twenty one — project notes
 
 ## Current status
 
-This repository is the demo version of the Twenty one site.
+This repository is the demo version of the twenty one site.
 Treatment reservations are intentionally not enabled. The site currently guides visitors to LINE / Instagram for Share Salon inquiries and tours.
 
 ## Structure
