@@ -203,12 +203,6 @@ h2 {
   font-display: swap;
 }
 
-@font-face {
-  font-family: "TwentyOne Serif";
-  src: url("/fonts/twenty-one-serif.ttc") format("truetype-collection");
-  font-display: swap;
-}
-
 .share-hero::before {
   position: absolute;
   inset: 0;

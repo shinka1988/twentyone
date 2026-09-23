@@ -10,5 +10,9 @@
   },
   "dependencies": {
     "astro": "^6.0.0"
+  },
+  "devDependencies": {
+    "fonteditor-core": "^2.6.3",
+    "fontkit": "^2.0.4"
   }
 }
