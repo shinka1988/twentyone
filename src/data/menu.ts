@@ -4,6 +4,8 @@ export interface MenuItem {
   price: string;
   description: string;
   image?: string;
+  imageLayout?: "panel";
+  imagePosition?: "left" | "center" | "right";
   detailType?: "hair-removal";
 }
 
@@ -90,7 +92,7 @@ const body: HairRemovalBodyPart[] = [
 ];
 
 export const hairRemoval = {
-  coverImage: "/images/menu/body/female/full-body.jpg",
+  coverImage: "/images/menu/hair-removal-cover.png",
   female: {
     label: "女性",
     overviewImage: "/images/menu/body/female/full-body.jpg",
@@ -116,6 +118,7 @@ export const menuItems: MenuItem[] = [
     price: "1回 2,000円〜（税込）",
     description: "全身・顔・各部位から選べる脱毛メニューです。VIO脱毛は女性のみ対応しています。",
     image: hairRemoval.coverImage,
+    imageLayout: "panel",
     detailType: "hair-removal",
   },
   {
@@ -123,17 +126,26 @@ export const menuItems: MenuItem[] = [
     name: "アイブロウスタイリング",
     price: "1回 4,800円（税込）",
     description: "眉の形を整え、自然な印象へ。",
+    image: "/images/menu/beauty-menu-illustrations.png",
+    imageLayout: "panel",
+    imagePosition: "left",
   },
   {
     category: "EYEBROW",
     name: "ハリウッドブロウリフト",
     price: "1回 6,900円（税込）",
     description: "眉毛の毛流れを整えるメニューです。",
+    image: "/images/menu/beauty-menu-illustrations.png",
+    imageLayout: "panel",
+    imagePosition: "center",
   },
   {
     category: "WHITENING",
     name: "ホワイトニング",
     price: "1回 3,300円（税込）",
     description: "twenty oneでご案内するホワイトニングメニューです。",
+    image: "/images/menu/beauty-menu-illustrations.png",
+    imageLayout: "panel",
+    imagePosition: "right",
   },
 ];

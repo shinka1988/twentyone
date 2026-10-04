@@ -40,5 +40,12 @@ npm run build
 - `public/images/menu/face/female/`
 - `public/images/menu/face/male/`
 
-TOPの「脱毛」カードと女性の脱毛一覧の全身画像は、
-`public/images/menu/body/female/full-body.jpg` を共通で使用します。
+アイブロウスタイリング・ハリウッドブロウリフト・ホワイトニングは、
+`public/images/menu/beauty-menu-illustrations.png` の3面イラストを使用します。
+`src/data/menu.ts` の `imagePosition` で左・中央・右を指定し、
+メニューカードと詳細画面に各メニューの画像を表示します。
+
+TOPの「脱毛」カードは、女性のみのイラスト
+`public/images/menu/hair-removal-cover.png` を使用します。
+4つのメニューカードは正方形の画像表示で揃えています。
+脱毛の詳細で表示する男女別・部位別の画像は、上記の脱毛画像フォルダを使用します。

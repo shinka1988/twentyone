@@ -24,11 +24,13 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
                 data-menu-price={item.price}
                 data-menu-description={item.description}
                 data-menu-image={item.image ?? ""}
+                data-menu-image-layout={item.imageLayout ?? ""}
+                data-menu-image-position={item.imagePosition ?? "center"}
                 data-menu-type={item.detailType ?? "normal"}
               >
                 {item.image && (
-                  <div class="menu-image">
-                    <img src={item.image} alt={item.name} loading="lazy" />
+                  <div class:list={["menu-image", { "menu-image-panel": item.imageLayout === "panel" }]}>
+                    <img src={item.image} alt={item.name} loading="lazy" style={{ objectPosition: item.imagePosition ?? "center" }} />
                   </div>
                 )}
                 <div class="menu-card-body">
@@ -392,6 +394,8 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
       price.textContent = card.dataset.menuPrice ?? "";
       description.textContent = card.dataset.menuDescription ?? "";
       const imageSrc = card.dataset.menuImage ?? "";
+      imageWrap.classList.toggle("menu-image-panel", card.dataset.menuImageLayout === "panel");
+      image.style.objectPosition = card.dataset.menuImagePosition ?? "center";
       if (imageSrc) {
         image.src = imageSrc;
         image.alt = card.dataset.menuName ?? "メニュー写真";
