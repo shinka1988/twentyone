@@ -8,7 +8,6 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
   <div class="container">
     <h2>MENU</h2>
     <p class="subtitle">twenty oneの施術メニュー</p>
-    <p class="menu-hint">現在はメニュー紹介のみとなります。施術のご予約受付は準備中です。</p>
 
     {categories.map((category) => (
       <div class="menu-category">
@@ -58,7 +57,6 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
           <h3 id="menu-modal-title"></h3>
           <p class="menu-modal-price"></p>
           <p class="menu-modal-description"></p>
-          <p class="menu-modal-contact-note">現在はメニュー紹介のみとなります。施術のご予約受付は準備中です。</p>
         </div>
       </div>
 
@@ -159,7 +157,6 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
           <p>安全で効果的な施術のため、ご理解とご協力をお願い申し上げます。</p>
         </aside>
 
-        <p class="menu-modal-contact-note">現在はメニュー紹介のみとなります。施術のご予約受付は準備中です。</p>
       </div>
     </div>
   </dialog>

@@ -510,12 +510,6 @@ a.btn.btn-outline:hover {
   font-size: 0.8rem;
 }
 
-.menu-hint {
-  margin: -22px auto 32px;
-  color: #aaa;
-  font-size: 0.78rem;
-}
-
 .menu-more {
   display: inline-flex;
   align-items: center;
@@ -611,16 +605,6 @@ a.btn.btn-outline:hover {
   margin: 0 0 24px;
   color: #666;
   font-size: 0.9rem;
-}
-
-.menu-modal-contact-note {
-  margin-top: 24px;
-  padding: 14px 16px;
-  border: 1px solid var(--line);
-  background: var(--warm-white);
-  color: #666;
-  font-size: 13px;
-  line-height: 1.8;
 }
 
 /* ========================================
