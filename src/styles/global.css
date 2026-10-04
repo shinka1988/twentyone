@@ -1619,10 +1619,53 @@ body.has-intro-transition {
   cursor: pointer;
 }
 
+
+.hair-shaving-note {
+  margin-top: 26px;
+  padding: 20px 22px;
+  border: 1px solid var(--line);
+  background: #fcfaf8;
+  color: #6f6766;
+}
+
+.hair-shaving-note h4 {
+  margin: 0 0 12px;
+  color: #544d4d;
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.hair-shaving-note p {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.9;
+}
+
+.hair-shaving-note ul {
+  margin: 14px 0;
+  padding-left: 1.2em;
+}
+
+.hair-shaving-note li {
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  line-height: 1.85;
+}
+
+.hair-shaving-note li:last-child {
+  margin-bottom: 0;
+}
+
 @media (max-width: 768px) {
   .hair-removal-panel {
     padding: 24px 18px 22px;
   }
+
+  .hair-shaving-note {
+    padding: 18px 16px;
+  }
+
 
   .hair-removal-gender-overview,
   .hair-removal-overview {

@@ -1,46 +1,44 @@
-# Astro Starter Kit: Basics
+# twenty one
 
-```sh
-npm create astro@latest -- --template basics
+Astroで作成している `twenty one` のデモサイトです。
+
+## 現在の運用
+
+- 施術メニューは紹介用です。現在、施術予約は受け付けていません。
+- シェアサロンの見学・利用相談は受け付けています。
+- シェアサロンの募集状況は `src/data/salon.ts` の `shareSalonRecruiting` で切り替えます。
+
+## ローカル確認
+
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+本番ビルド確認:
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```bash
+npm run build
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 主な編集箇所
 
-## 🧞 Commands
+- `src/data/menu.ts` — メニュー内容・料金・脱毛画像の参照
+- `src/data/salon.ts` — 店舗情報・シェアサロン募集状態
+- `src/components/Menu.astro` — メニューUI
+- `src/styles/global.css` — TOP・メニューを含む全体デザイン
+- `src/pages/tenant.astro` — シェアサロンページ
 
-All commands are run from the root of the project, from a terminal:
+## 画像
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+サイトで使用中の画像だけを `public/images/` に残しています。
 
-## 👀 Want to learn more?
+脱毛画像は以下に整理しています。
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- `public/images/menu/body/female/`
+- `public/images/menu/body/male/`
+- `public/images/menu/face/female/`
+- `public/images/menu/face/male/`
+
+TOPの「脱毛」カードと女性の脱毛一覧の全身画像は、
+`public/images/menu/body/female/full-body.jpg` を共通で使用します。

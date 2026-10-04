@@ -88,27 +88,37 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
             <div class="hair-gender-overview-copy">
               <p class="hair-step-label">01 / MENU</p>
               <h4 class="hair-gender-title">女性の脱毛メニュー</h4>
-              <p>全身脱毛は<strong>顔を含む</strong>全身が対象です。VIOは行っておりません。</p>
+              <p>全身・顔・各部位から選べます。VIO脱毛は女性のみ対応しています。</p>
             </div>
           </div>
+          <p class="hair-price-note">※ 表示料金はすべて1回あたり・税込です。</p>
           <div class="hair-choice-grid hair-body-grid"></div>
-          <p class="hair-vio-note">※ 全身脱毛は顔を含みます。VIOは行っておりません。</p>
+          <p class="hair-vio-note">※ 男性のVIO脱毛は現在行っておりません。</p>
         </div>
 
-        <div class="hair-removal-view" data-view="arms" hidden>
+        <div class="hair-removal-view" data-view="fullBody" hidden>
           <div class="hair-section-intro">
-            <p class="hair-step-label">04 / ARM AREA</p>
-            <h4>腕の部位を選ぶ</h4>
-            <p>ヒジ上・ヒジ下・手の甲・指から選べます。</p>
+            <p class="hair-step-label">02 / FULL BODY</p>
+            <h4>全身脱毛を選ぶ</h4>
+            <p>顔・VIOの有無から、ご希望の全身脱毛メニューを選べます。</p>
           </div>
-          <div class="hair-choice-grid hair-sub-grid hair-arm-grid"></div>
+          <div class="hair-choice-grid hair-sub-grid hair-full-body-grid"></div>
+        </div>
+
+        <div class="hair-removal-view" data-view="vio" hidden>
+          <div class="hair-section-intro">
+            <p class="hair-step-label">05 / VIO AREA</p>
+            <h4>VIOの部位を選ぶ</h4>
+            <p>VIO全体、またはV・I・Oの各部位から選べます。</p>
+          </div>
+          <div class="hair-choice-grid hair-sub-grid hair-vio-grid"></div>
         </div>
 
         <div class="hair-removal-view" data-view="legs" hidden>
           <div class="hair-section-intro">
-            <p class="hair-step-label">05 / LEG AREA</p>
+            <p class="hair-step-label">04 / LEG AREA</p>
             <h4>脚の部位を選ぶ</h4>
-            <p>太もも・ひざ下・足の甲・指から選べます。</p>
+            <p>太もも・ひざ下・ひざ周り・足（甲・指）から選べます。</p>
           </div>
           <div class="hair-choice-grid hair-sub-grid hair-leg-grid"></div>
         </div>
@@ -117,7 +127,7 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
           <div class="hair-section-intro">
             <p class="hair-step-label">03 / FACE AREA</p>
             <h4>顔の部位を選ぶ</h4>
-            <p>女性は「口まわり」、男性は「鼻下」「あごひげ」を個別に選べます。</p>
+            <p>おでこ・眉上・眉間・両ほほ・もみあげ・鼻下・あごから選べます。</p>
           </div>
           <div class="hair-choice-grid hair-face-grid"></div>
         </div>
@@ -130,11 +140,22 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
             <div class="hair-detail-copy">
               <p class="hair-step-label">DETAIL</p>
               <h4 class="hair-detail-title"></h4>
+              <p class="hair-detail-price"></p>
               <p class="hair-detail-description"></p>
               <button type="button" class="hair-back">← 一覧に戻る</button>
             </div>
           </div>
         </div>
+
+        <aside class="hair-shaving-note" aria-label="事前シェービングについてのお願い">
+          <h4>【事前シェービング（剃毛）についてのお願い】</h4>
+          <p>当店では、施術時間の確保と安全な照射のため、ご来店前の完全な剃毛をお願いしております。<br />脱毛の施術前日〜2日前までに、お肌を傷つけにくい電気シェーバーを使って、ご自身で丁寧に剃毛を行ってください。</p>
+          <ul>
+            <li>剃り残しが多い場合や未剃毛の部位がある場合、当日の施術をお断りするか、該当部位をスキップしての施術となる可能性がございます。</li>
+            <li>背中など手が届かない部位以外は、前日または当日の朝までに丁寧なシェービングをお願いいたします。</li>
+          </ul>
+          <p>安全で効果的な施術のため、ご理解とご協力をお願い申し上げます。</p>
+        </aside>
 
         <p class="menu-modal-contact-note">現在はメニュー紹介のみとなります。施術のご予約受付は準備中です。</p>
       </div>
@@ -157,11 +178,11 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
   const description = document.querySelector<HTMLElement>(".menu-modal-description");
 
   type Gender = "female" | "male";
-  type Level = "body" | "face" | "arms" | "legs" | "detail";
-  type ListLevel = "body" | "face" | "arms" | "legs";
+  type Level = "body" | "face" | "legs" | "fullBody" | "vio" | "detail";
+  type ListLevel = "body" | "face" | "legs" | "fullBody" | "vio";
   type BodyItem = (typeof hairRemoval.body)[number];
   type FaceItem = (typeof hairRemoval.female.face)[number];
-  type SubPartItem = (typeof hairRemoval.armParts)[number];
+  type SubPartItem = { id: string; name: string; description: string; imageKey: string; price: string; femaleOnly?: boolean };
 
   let currentGender: Gender = "female";
   let currentLevel: Level = "body";
@@ -170,12 +191,14 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
   const views = document.querySelectorAll<HTMLElement>(".hair-removal-view");
   const bodyGrid = document.querySelector<HTMLElement>(".hair-body-grid");
   const faceGrid = document.querySelector<HTMLElement>(".hair-face-grid");
-  const armGrid = document.querySelector<HTMLElement>(".hair-arm-grid");
   const legGrid = document.querySelector<HTMLElement>(".hair-leg-grid");
+  const fullBodyGrid = document.querySelector<HTMLElement>(".hair-full-body-grid");
+  const vioGrid = document.querySelector<HTMLElement>(".hair-vio-grid");
   const breadcrumbCurrent = document.querySelector<HTMLElement>(".hair-breadcrumb-current");
   const detailImage = document.querySelector<HTMLImageElement>(".hair-detail-image");
   const detailTitle = document.querySelector<HTMLElement>(".hair-detail-title");
   const detailDescription = document.querySelector<HTMLElement>(".hair-detail-description");
+  const detailPrice = document.querySelector<HTMLElement>(".hair-detail-price");
   const genderImage = document.querySelector<HTMLImageElement>(".hair-gender-image");
   const genderTitle = document.querySelector<HTMLElement>(".hair-gender-title");
 
@@ -191,31 +214,33 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
     breadcrumb?.classList.toggle("is-body", level === "body");
     const detailSeparator = document.querySelector<HTMLElement>(".hair-breadcrumb-detail-separator");
     const detailCrumb = document.querySelector<HTMLElement>(".hair-breadcrumb-detail");
-    const currentLabel = level === "body" ? "メニュー一覧" : level === "face" ? "顔の部位" : level === "arms" ? "腕の部位" : level === "legs" ? "脚の部位" : previousListLevel === "face" ? "顔の部位" : previousListLevel === "arms" ? "腕の部位" : previousListLevel === "legs" ? "脚の部位" : "メニュー一覧";
+    const currentLabel = level === "body" ? "メニュー一覧" : level === "face" ? "顔の部位" : level === "legs" ? "脚の部位" : level === "fullBody" ? "全身脱毛" : level === "vio" ? "VIOの部位" : previousListLevel === "face" ? "顔の部位" : previousListLevel === "legs" ? "脚の部位" : previousListLevel === "fullBody" ? "全身脱毛" : previousListLevel === "vio" ? "VIOの部位" : "メニュー一覧";
     if (breadcrumbCurrent) breadcrumbCurrent.textContent = currentLabel;
     if (detailSeparator) detailSeparator.hidden = level !== "detail";
     if (detailCrumb) { detailCrumb.hidden = level !== "detail"; detailCrumb.textContent = level === "detail" ? (detailTitle?.textContent ?? "選択した部位") : ""; }
   }
 
-  function openDetail(name: string, desc: string, src: string, backTo: ListLevel) {
-    if (!detailImage || !detailTitle || !detailDescription) return;
+  function openDetail(name: string, desc: string, src: string, price: string, backTo: ListLevel) {
+    if (!detailImage || !detailTitle || !detailDescription || !detailPrice) return;
     previousListLevel = backTo;
     detailImage.src = src;
     detailImage.alt = `${name}の脱毛部位イメージ`;
     detailTitle.textContent = name;
     detailDescription.textContent = desc;
+    detailPrice.textContent = price;
     showHairView("detail");
   }
 
   function renderBodyChoices() {
     if (!bodyGrid) return;
-    bodyGrid.innerHTML = hairRemoval.body.map((item: BodyItem, index: number) => {
+    const availableBody = hairRemoval.body.filter((item: BodyItem) => !item.femaleOnly || currentGender === "female");
+    bodyGrid.innerHTML = availableBody.map((item: BodyItem, index: number) => {
       const src = bodyImage(item.imageKey);
       return `
         <button type="button" class="hair-choice-card" data-body-id="${item.id}">
           <span class="hair-choice-number">${String(index + 1).padStart(2, "0")}</span>
           <span class="hair-choice-card-image"><img src="${src}" alt="${item.name}" loading="lazy"></span>
-          <span class="hair-choice-card-copy"><strong>${item.name}</strong><small>${item.description}</small></span>
+          <span class="hair-choice-card-copy"><strong>${item.name}</strong><small>${item.description}</small><small class="hair-choice-price">${item.price}</small></span>
         </button>
       `;
     }).join("");
@@ -223,14 +248,19 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
     bodyGrid.querySelectorAll<HTMLButtonElement>("[data-body-id]").forEach((button) => {
       button.addEventListener("click", () => {
         const id = button.dataset.bodyId;
+        if (id === "full-body") {
+          showHairView("fullBody");
+          renderSubChoices("fullBody");
+          return;
+        }
+        if (id === "vio-parts") {
+          showHairView("vio");
+          renderSubChoices("vio");
+          return;
+        }
         if (id === "face") {
           showHairView("face");
           renderFaceChoices();
-          return;
-        }
-        if (id === "arm-parts") {
-          showHairView("arms");
-          renderSubChoices("arms");
           return;
         }
         if (id === "leg-parts") {
@@ -240,7 +270,7 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
         }
         const part = hairRemoval.body.find((item) => item.id === id);
         if (!part) return;
-        openDetail(part.name, part.description, bodyImage(part.imageKey), "body");
+        openDetail(part.name, part.description, bodyImage(part.imageKey), part.price, "body");
       });
     });
   }
@@ -252,7 +282,7 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
       <button type="button" class="hair-choice-card" data-face-id="${part.id}">
         <span class="hair-choice-number">${String(index + 1).padStart(2, "0")}</span>
         <span class="hair-choice-card-image"><img src="${part.image}" alt="${part.name}" loading="lazy"></span>
-        <span class="hair-choice-card-copy"><strong>${part.name}</strong><small>${part.description}</small></span>
+        <span class="hair-choice-card-copy"><strong>${part.name}</strong><small>${part.description}</small><small class="hair-choice-price">${part.price}</small></span>
       </button>
     `).join("");
 
@@ -260,20 +290,25 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
       button.addEventListener("click", () => {
         const part = parts.find((item) => item.id === button.dataset.faceId);
         if (!part) return;
-        openDetail(part.name, part.description, part.image, "face");
+        openDetail(part.name, part.description, part.image, part.price, "face");
       });
     });
   }
 
-  function renderSubChoices(level: "arms" | "legs") {
-    const grid = level === "arms" ? armGrid : legGrid;
+  function renderSubChoices(level: "legs" | "fullBody" | "vio") {
+    const grid = level === "legs" ? legGrid : level === "fullBody" ? fullBodyGrid : vioGrid;
     if (!grid) return;
-    const parts = level === "arms" ? hairRemoval.armParts : hairRemoval.legParts;
+    const source: SubPartItem[] = level === "legs"
+      ? hairRemoval.legParts
+      : level === "fullBody"
+        ? hairRemoval.fullBodyPlans
+        : hairRemoval.vioParts;
+    const parts = source.filter((part) => !part.femaleOnly || currentGender === "female");
     grid.innerHTML = parts.map((part: SubPartItem, index: number) => `
       <button type="button" class="hair-choice-card" data-sub-id="${part.id}">
         <span class="hair-choice-number">${String(index + 1).padStart(2, "0")}</span>
         <span class="hair-choice-card-image"><img src="${bodyImage(part.imageKey)}" alt="${part.name}" loading="lazy"></span>
-        <span class="hair-choice-card-copy"><strong>${part.name}</strong><small>${part.description}</small></span>
+        <span class="hair-choice-card-copy"><strong>${part.name}</strong><small>${part.description}</small><small class="hair-choice-price">${part.price}</small></span>
       </button>
     `).join("");
 
@@ -281,7 +316,7 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
       button.addEventListener("click", () => {
         const part = parts.find((item) => item.id === button.dataset.subId);
         if (!part) return;
-        openDetail(part.name, part.description, bodyImage(part.imageKey), level);
+        openDetail(part.name, part.description, bodyImage(part.imageKey), part.price, level);
       });
     });
   }
@@ -302,8 +337,9 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
 
     renderBodyChoices();
     renderFaceChoices();
-    renderSubChoices("arms");
     renderSubChoices("legs");
+    renderSubChoices("fullBody");
+    renderSubChoices("vio");
   }
 
   function resetHairRemoval() {
@@ -333,8 +369,9 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
 
   renderBodyChoices();
   renderFaceChoices();
-  renderSubChoices("arms");
   renderSubChoices("legs");
+  renderSubChoices("fullBody");
+  renderSubChoices("vio");
 
   cards.forEach((card) => {
     card.addEventListener("click", () => {
