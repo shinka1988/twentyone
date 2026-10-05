@@ -24,10 +24,14 @@ npm run build
 ## 主な編集箇所
 
 - `src/data/menu.ts` — メニュー内容・料金・脱毛画像の参照
-- `src/data/salon.ts` — 店舗情報・シェアサロン募集状態
+- `src/data/salon.ts` — 店舗情報・住所・Googleマップ・シェアサロン募集状態
+- `src/components/SalonMap.astro` — TOPとシェアサロンで共通のピン付き地図
 - `src/components/Menu.astro` — メニューUI
 - `src/styles/global.css` — TOP・メニューを含む全体デザイン
 - `src/pages/tenant.astro` — シェアサロンページ
+
+地図は店舗住所の建物位置を確認し、赤いピンが出る座標指定の埋め込みを使用しています。
+住所の表示は `salonAddress`、埋め込み地図は `mapEmbedUrl`、別タブで開く地図は `mapUrl` で変更できます。
 
 ## 画像
 

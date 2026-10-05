@@ -879,7 +879,6 @@ a.btn.btn-outline:hover {
 .share-access-map {
   width: 100%;
   margin-top: 24px;
-  aspect-ratio: 16 / 8.5;
   overflow: hidden;
   border: 1px solid var(--line);
   background: #f7f5f3;
@@ -888,7 +887,7 @@ a.btn.btn-outline:hover {
 .share-access-map iframe {
   display: block;
   width: 100%;
-  height: 100%;
+  height: 320px;
   border: 0;
 }
 
@@ -1058,6 +1057,59 @@ a.btn.btn-outline:hover {
   border: 0;
 }
 
+.map-caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 24px;
+  padding: 18px 22px;
+  border-top: 1px solid var(--line);
+  background: #fff;
+}
+
+.map-place {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.map-pin-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: #d94c46;
+}
+
+.map-place small {
+  display: block;
+  font-size: 0.75rem;
+  color: #756a6a;
+}
+
+.map-open-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.8rem;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.map-open-link:hover {
+  opacity: 0.7;
+}
+
+.map-open-link svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
 @media (max-width: 640px) {
   .access-map {
     margin-top: 32px;
@@ -1065,6 +1117,14 @@ a.btn.btn-outline:hover {
 
   .access-map iframe {
     height: 300px;
+  }
+
+  .share-access-map iframe {
+    height: 300px;
+  }
+
+  .map-caption {
+    padding: 16px;
   }
 }
 

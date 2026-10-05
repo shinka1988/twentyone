@@ -1,0 +1,34 @@
+---
+import { salonName, mapEmbedUrl, mapUrl } from "../data/salon";
+
+interface Props {
+  variant?: "main" | "share";
+}
+
+const { variant = "main" } = Astro.props;
+---
+
+<div class={variant === "share" ? "share-access-map" : "access-map"} aria-label={`${salonName}の所在地マップ`}>
+  <iframe
+    title={`${salonName} 所在地 Google Map`}
+    src={mapEmbedUrl}
+    loading="lazy"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+  ></iframe>
+  <div class="map-caption">
+    <p class="map-place">
+      <svg class="map-pin-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Z" fill="currentColor" />
+        <circle cx="12" cy="9" r="2.5" fill="#fff" />
+      </svg>
+      <span>{salonName}<small>赤いピンが店舗の所在地です</small></span>
+    </p>
+    <a class="map-open-link" href={mapUrl} target="_blank" rel="noopener noreferrer">
+      Googleマップで開く
+      <svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M5 15 15 5M5 5h10v10" />
+      </svg>
+    </a>
+  </div>
+</div>
