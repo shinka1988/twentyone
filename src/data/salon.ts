@@ -4,11 +4,12 @@ export const salonAddress = "北海道札幌市豊平区平岸３条１３丁目
 
 // Googleマップで確認した建物の位置（43.026738, 141.3693725）。
 // 住所検索ではピンが出ないため、座標の赤いピンを共有した埋め込みを使用します。
+// 地図の中心も同じ位置に指定しています。
 export const mapEmbedUrl =
-  "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1458.3491296910497!2d141.3680152996183!3d43.02673797101838!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDPCsDAxJzM2LjMiTiAxNDHCsDIyJzA5LjciRQ!5e0!3m2!1sja!2suk!4v1791204618311!5m2!1sja!2suk";
+  "https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d1458.3491290025183!2d141.3693725!3d43.026738!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDPCsDAxJzM2LjMiTiAxNDHCsDIyJzA5LjciRQ!5e0!3m2!1sja!2suk!4v1791206177793!5m2!1sja!2suk";
 
 export const mapUrl =
-  "https://www.google.com/maps/place/43%C2%B001'36.3%22N+141%C2%B022'09.7%22E/@43.026738,141.3680153,18z/data=!4m4!3m3!8m2!3d43.026738!4d141.3693725?hl=ja&entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D";
+  "https://www.google.com/maps/place/43%C2%B001'36.3%22N+141%C2%B022'09.7%22E/@43.026738,141.3693725,18z/data=!4m4!3m3!8m2!3d43.02675!4d141.3693611?hl=ja&entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D";
 
 export const instagramUrl =
   "https://www.instagram.com/eyebrow.nail_21/";
