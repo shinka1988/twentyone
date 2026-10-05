@@ -1084,12 +1084,6 @@ a.btn.btn-outline:hover {
   color: #d94c46;
 }
 
-.map-place small {
-  display: block;
-  font-size: 0.75rem;
-  color: #756a6a;
-}
-
 .map-open-link {
   display: inline-flex;
   align-items: center;
