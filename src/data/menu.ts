@@ -114,9 +114,9 @@ export const hairRemoval = {
 export const nailInformation = {
   designNote: "デザインは2回目以降のご予約からご案内可能です。",
   offMenu: [
-    { name: "他店オフ", price: "¥1,500" },
+    { name: "他店オフ", price: "1,500円（税込）" },
     { name: "自店オフ（付け替え）", price: "無料" },
-    { name: "自店オフのみ", price: "¥1,500" },
+    { name: "自店オフのみ", price: "1,500円（税込）" },
   ],
 };
 
@@ -160,7 +160,7 @@ export const menuItems: MenuItem[] = [
   {
     category: "NAIL",
     name: "ワンカラー",
-    price: "¥5,500",
+    price: "1回 5,500円（税込）",
     description: "ひと色で仕上げる、シンプルで上品な指先に。",
     image: "/images/menu/nail-one-color.png",
     imageLayout: "panel",
@@ -169,7 +169,7 @@ export const menuItems: MenuItem[] = [
   {
     category: "NAIL",
     name: "フットワンカラー",
-    price: "¥5,500",
+    price: "1回 5,500円（税込）",
     description: "ひと色で仕上げる、シンプルで上品な足元に。",
     image: "/images/menu/nail-foot-one-color.png",
     imageLayout: "panel",
