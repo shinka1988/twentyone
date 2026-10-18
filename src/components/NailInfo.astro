@@ -1,0 +1,21 @@
+---
+import { nailInformation } from "../data/menu";
+---
+
+<aside class="nail-info" aria-label="ネイルのご案内">
+  <div class="nail-design-info">
+    <h4>デザインについて</h4>
+    <p>{nailInformation.designNote}</p>
+  </div>
+  <div class="nail-off-info">
+    <h4>ネイルオフ</h4>
+    <dl class="nail-off-list">
+      {nailInformation.offMenu.map((item) => (
+        <div>
+          <dt>{item.name}</dt>
+          <dd>{item.price}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</aside>

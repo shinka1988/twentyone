@@ -1,5 +1,6 @@
 ---
 import { menuItems, hairRemoval } from "../data/menu";
+import NailInfo from "./NailInfo.astro";
 
 const categories = [...new Set(menuItems.map((item) => item.category))];
 ---
@@ -57,6 +58,9 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
           <h3 id="menu-modal-title"></h3>
           <p class="menu-modal-price"></p>
           <p class="menu-modal-description"></p>
+          <div class="menu-modal-nail-info" hidden>
+            <NailInfo />
+          </div>
         </div>
       </div>
 
@@ -74,8 +78,8 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
 
         <div class="hair-removal-breadcrumb" aria-live="polite">
           <button type="button" data-level="body">脱毛メニュー</button>
-          <span>›</span>
-          <span class="hair-breadcrumb-current">メニュー一覧</span>
+          <span class="hair-breadcrumb-current-separator" hidden>›</span>
+          <span class="hair-breadcrumb-current" hidden></span>
           <span class="hair-breadcrumb-detail-separator" hidden>›</span>
           <span class="hair-breadcrumb-detail" hidden></span>
         </div>
@@ -175,6 +179,7 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
   const title = document.querySelector<HTMLElement>("#menu-modal-title");
   const price = document.querySelector<HTMLElement>(".menu-modal-price");
   const description = document.querySelector<HTMLElement>(".menu-modal-description");
+  const nailInfo = document.querySelector<HTMLElement>(".menu-modal-nail-info");
 
   type Gender = "female" | "male";
   type Level = "body" | "face" | "legs" | "fullBody" | "vio" | "detail";
@@ -209,12 +214,22 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
   function showHairView(level: Level) {
     currentLevel = level;
     views.forEach((view) => { view.hidden = view.dataset.view !== level; });
-    const breadcrumb = document.querySelector<HTMLElement>(".hair-removal-breadcrumb");
-    breadcrumb?.classList.toggle("is-body", level === "body");
+    const currentSeparator = document.querySelector<HTMLElement>(".hair-breadcrumb-current-separator");
     const detailSeparator = document.querySelector<HTMLElement>(".hair-breadcrumb-detail-separator");
     const detailCrumb = document.querySelector<HTMLElement>(".hair-breadcrumb-detail");
-    const currentLabel = level === "body" ? "メニュー一覧" : level === "face" ? "顔の部位" : level === "legs" ? "脚の部位" : level === "fullBody" ? "全身脱毛" : level === "vio" ? "VIOの部位" : previousListLevel === "face" ? "顔の部位" : previousListLevel === "legs" ? "脚の部位" : previousListLevel === "fullBody" ? "全身脱毛" : previousListLevel === "vio" ? "VIOの部位" : "メニュー一覧";
-    if (breadcrumbCurrent) breadcrumbCurrent.textContent = currentLabel;
+    const listLabels: Record<ListLevel, string> = {
+      body: "",
+      face: "顔の部位",
+      legs: "脚の部位",
+      fullBody: "全身脱毛",
+      vio: "VIOの部位",
+    };
+    const currentLabel = listLabels[level === "detail" ? previousListLevel : level];
+    if (currentSeparator) currentSeparator.hidden = !currentLabel;
+    if (breadcrumbCurrent) {
+      breadcrumbCurrent.hidden = !currentLabel;
+      breadcrumbCurrent.textContent = currentLabel;
+    }
     if (detailSeparator) detailSeparator.hidden = level !== "detail";
     if (detailCrumb) { detailCrumb.hidden = level !== "detail"; detailCrumb.textContent = level === "detail" ? (detailTitle?.textContent ?? "選択した部位") : ""; }
   }
@@ -390,6 +405,7 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
       title.textContent = card.dataset.menuName ?? "";
       price.textContent = card.dataset.menuPrice ?? "";
       description.textContent = card.dataset.menuDescription ?? "";
+      if (nailInfo) nailInfo.hidden = type !== "nail";
       const imageSrc = card.dataset.menuImage ?? "";
       imageWrap.classList.toggle("menu-image-panel", card.dataset.menuImageLayout === "panel");
       image.style.objectPosition = card.dataset.menuImagePosition ?? "center";

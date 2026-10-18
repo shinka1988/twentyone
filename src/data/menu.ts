@@ -6,7 +6,7 @@ export interface MenuItem {
   image?: string;
   imageLayout?: "panel";
   imagePosition?: "left" | "center" | "right";
-  detailType?: "hair-removal";
+  detailType?: "hair-removal" | "nail";
 }
 
 export interface HairRemovalFacePart {
@@ -111,6 +111,15 @@ export const hairRemoval = {
   vioParts,
 };
 
+export const nailInformation = {
+  designNote: "デザインは2回目以降のご予約からご案内可能です。",
+  offMenu: [
+    { name: "他店オフ", price: "¥1,500" },
+    { name: "自店オフ（付け替え）", price: "無料" },
+    { name: "自店オフのみ", price: "¥1,500" },
+  ],
+};
+
 export const menuItems: MenuItem[] = [
   {
     category: "HAIR REMOVAL",
@@ -147,5 +156,23 @@ export const menuItems: MenuItem[] = [
     image: "/images/menu/beauty-menu-illustrations.png",
     imageLayout: "panel",
     imagePosition: "right",
+  },
+  {
+    category: "NAIL",
+    name: "ワンカラー",
+    price: "¥5,500",
+    description: "ひと色で仕上げる、シンプルで上品な指先に。",
+    image: "/images/menu/nail-one-color.png",
+    imageLayout: "panel",
+    detailType: "nail",
+  },
+  {
+    category: "NAIL",
+    name: "フットワンカラー",
+    price: "¥5,500",
+    description: "ひと色で仕上げる、シンプルで上品な足元に。",
+    image: "/images/menu/nail-foot-one-color.png",
+    imageLayout: "panel",
+    detailType: "nail",
   },
 ];

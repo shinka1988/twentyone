@@ -446,6 +446,65 @@ a.btn.btn-outline:hover {
   text-align: left;
 }
 
+.nail-info {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px 36px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  text-align: left;
+}
+
+.nail-info h4 {
+  margin: 0 0 12px;
+  color: var(--ink);
+  font-size: 0.88rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+}
+
+.nail-design-info p {
+  margin: 0;
+  color: #756a6a;
+  font-size: 0.84rem;
+  line-height: 1.9;
+}
+
+.nail-off-list {
+  margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.7;
+}
+
+.nail-off-list > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.nail-off-list > div:first-child {
+  padding-top: 0;
+}
+
+.nail-off-list dt {
+  color: #756a6a;
+}
+
+.nail-off-list dd {
+  margin: 0;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.menu-modal-nail-info .nail-info {
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1007,6 +1066,11 @@ a.btn.btn-outline:hover {
 
   .menu-grid {
     grid-template-columns: 1fr;
+  }
+
+  .nail-info {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 
   .gallery-grid {
