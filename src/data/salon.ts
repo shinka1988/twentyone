@@ -17,6 +17,9 @@ export const instagramUrl =
 export const lineUrl =
   "https://lin.ee/1ZlvOrl";
 
+export const bookingUrl =
+  "http://b.hpr.jp/kr/hp/H000830521";
+
 // シェアサロン募集状況
 // true = 募集中 / false = 満席
 export const shareSalonRecruiting = true;

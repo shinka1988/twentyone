@@ -23,6 +23,7 @@ export interface HairRemovalBodyPart {
   description: string;
   imageKey: string;
   price: string;
+  femalePrice?: string;
   femaleOnly?: boolean;
 }
 
@@ -77,7 +78,7 @@ const vioParts: HairRemovalSubPart[] = [
 
 const body: HairRemovalBodyPart[] = [
   { id: "full-body", name: "全身脱毛", description: "顔・VIOの有無からメニューを選べます。", imageKey: "full-body", price: "1回 9,800円〜（税込）" },
-  { id: "face-all", name: "顔全体", description: "顔全体をまとめてケアするメニューです。", imageKey: "face-all", price: "1回 6,000円（税込）" },
+  { id: "face-all", name: "顔全体", description: "顔全体をまとめてケアするメニューです。", imageKey: "face-all", price: "1回 6,000円（税込）", femalePrice: "1回 5,000円（税込）" },
   { id: "face", name: "顔の部位", description: "両ほほ・もみあげ、鼻下、あご、眉間、眉上、おでこから選べます。", imageKey: "face-all", price: "1回 各2,000円（税込）" },
   { id: "neck", name: "うなじ", description: "うなじのムダ毛をケアします。", imageKey: "neck", price: "1回 3,500円（税込）" },
   { id: "chest", name: "胸", description: "胸まわりのムダ毛をケアします。", imageKey: "chest", price: "1回 5,000円（税込）" },

@@ -127,6 +127,22 @@ h2 {
   color: #a88f8d;
 }
 
+.nav .header-booking-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 16px;
+  border: 1px solid #cdbdbc;
+  background: var(--warm-white);
+  color: #806c6c;
+}
+
+.nav .header-booking-link:hover,
+.nav .header-booking-link:focus-visible {
+  background: #f4ecea;
+}
+
 .header-sns-link {
   display: inline-flex;
   align-items: center;
@@ -444,6 +460,30 @@ a.btn.btn-outline:hover {
   font-weight: 400;
   letter-spacing: 0.12em;
   text-align: left;
+}
+
+.menu-booking {
+  margin-top: 36px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+
+.menu-booking p {
+  margin: 0 0 16px;
+  color: #756a6a;
+  font-size: 0.85rem;
+}
+
+.menu-booking-link {
+  width: min(100%, 340px);
+  min-width: 0;
+  gap: 10px;
+}
+
+.menu-modal-booking {
+  padding: 24px 30px 30px;
+  border-top: 1px solid var(--line);
+  text-align: center;
 }
 
 .nail-info {

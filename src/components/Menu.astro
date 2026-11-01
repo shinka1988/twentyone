@@ -1,5 +1,6 @@
 ---
 import { menuItems, hairRemoval } from "../data/menu";
+import { bookingUrl } from "../data/salon";
 import NailInfo from "./NailInfo.astro";
 
 const categories = [...new Set(menuItems.map((item) => item.category))];
@@ -43,6 +44,12 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
         </div>
       </div>
     ))}
+    <div class="menu-booking">
+      <p>施術のご予約・空き状況はこちら</p>
+      <a href={bookingUrl} target="_blank" rel="noopener noreferrer" class="btn btn-outline menu-booking-link" aria-label="HOT PEPPER Beautyで予約する（新しいタブで開きます）">
+        HOT PEPPER Beautyで予約する <span aria-hidden="true">↗</span>
+      </a>
+    </div>
   </div>
 
   <dialog class="menu-modal" aria-labelledby="menu-modal-title">
@@ -162,6 +169,11 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
         </aside>
 
       </div>
+      <div class="menu-modal-booking">
+        <a href={bookingUrl} target="_blank" rel="noopener noreferrer" class="btn btn-outline menu-booking-link" aria-label="HOT PEPPER Beautyで予約する（新しいタブで開きます）">
+          HOT PEPPER Beautyで予約する <span aria-hidden="true">↗</span>
+        </a>
+      </div>
     </div>
   </dialog>
 </section>
@@ -211,6 +223,10 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
     return `/images/menu/body/${currentGender}/${key}.jpg`;
   }
 
+  function bodyPrice(part: BodyItem): string {
+    return currentGender === "female" ? (part.femalePrice ?? part.price) : part.price;
+  }
+
   function showHairView(level: Level) {
     currentLevel = level;
     views.forEach((view) => { view.hidden = view.dataset.view !== level; });
@@ -254,7 +270,7 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
         <button type="button" class="hair-choice-card" data-body-id="${item.id}">
           <span class="hair-choice-number">${String(index + 1).padStart(2, "0")}</span>
           <span class="hair-choice-card-image"><img src="${src}" alt="${item.name}" loading="lazy"></span>
-          <span class="hair-choice-card-copy"><strong>${item.name}</strong><small>${item.description}</small><small class="hair-choice-price">${item.price}</small></span>
+          <span class="hair-choice-card-copy"><strong>${item.name}</strong><small>${item.description}</small><small class="hair-choice-price">${bodyPrice(item)}</small></span>
         </button>
       `;
     }).join("");
@@ -284,7 +300,7 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
         }
         const part = hairRemoval.body.find((item) => item.id === id);
         if (!part) return;
-        openDetail(part.name, part.description, bodyImage(part.imageKey), part.price, "body");
+        openDetail(part.name, part.description, bodyImage(part.imageKey), bodyPrice(part), "body");
       });
     });
   }

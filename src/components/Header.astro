@@ -1,5 +1,5 @@
 ---
-import { salonName, instagramUrl, lineUrl } from "../data/salon";
+import { salonName, instagramUrl, lineUrl, bookingUrl } from "../data/salon";
 
 const isTenant = Astro.url.pathname === "/tenant";
 ---
@@ -28,6 +28,7 @@ const isTenant = Astro.url.pathname === "/tenant";
     <a href="/#menu">MENU</a>
     <a href="/#access">ACCESS</a>
     <a href="/tenant" class:list={{ active: isTenant }}>SHARE SALON</a>
+    <a href={bookingUrl} target="_blank" rel="noopener noreferrer" class="header-booking-link" aria-label="HOT PEPPER Beautyで施術を予約する（新しいタブで開きます）">施術のご予約</a>
     <a href={lineUrl} target="_blank" rel="noopener noreferrer" class="header-sns-link" title="LINE" aria-label="LINE">
       <span class="icon-wrapper">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#06C755">
