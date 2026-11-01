@@ -183,6 +183,7 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
 
   const cards = document.querySelectorAll<HTMLButtonElement>(".menu-card-button");
   const modal = document.querySelector<HTMLDialogElement>(".menu-modal");
+  const modalInner = modal?.querySelector<HTMLElement>(".menu-modal-inner");
   const close = document.querySelector<HTMLButtonElement>(".menu-modal-close");
   const normalPanel = document.querySelector<HTMLElement>(".menu-normal-panel");
   const hairPanel = document.querySelector<HTMLElement>(".hair-removal-panel");
@@ -227,6 +228,16 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
     return currentGender === "female" ? (part.femalePrice ?? part.price) : part.price;
   }
 
+  function resetMenuScroll() {
+    const scrollToTop = () => {
+      if (modalInner) modalInner.scrollTop = 0;
+      if (modal) modal.scrollTop = 0;
+    };
+    scrollToTop();
+    // カードの描き直しやダイアログ表示後にも先頭位置を確定します。
+    requestAnimationFrame(scrollToTop);
+  }
+
   function showHairView(level: Level) {
     currentLevel = level;
     views.forEach((view) => { view.hidden = view.dataset.view !== level; });
@@ -248,6 +259,7 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
     }
     if (detailSeparator) detailSeparator.hidden = level !== "detail";
     if (detailCrumb) { detailCrumb.hidden = level !== "detail"; detailCrumb.textContent = level === "detail" ? (detailTitle?.textContent ?? "選択した部位") : ""; }
+    resetMenuScroll();
   }
 
   function openDetail(name: string, desc: string, src: string, price: string, backTo: ListLevel) {
@@ -412,6 +424,7 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
         hairPanel?.removeAttribute("hidden");
         resetHairRemoval();
         modal.showModal();
+        resetMenuScroll();
         return;
       }
 
@@ -434,6 +447,7 @@ const categories = [...new Set(menuItems.map((item) => item.category))];
         imageWrap.hidden = true;
       }
       modal.showModal();
+      resetMenuScroll();
     });
   });
 
